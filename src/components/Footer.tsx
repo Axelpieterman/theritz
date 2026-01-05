@@ -9,7 +9,7 @@ interface FooterProps {
 export default function Footer({ currentLang }: FooterProps) {
   const t = useTranslations(currentLang);
   return (
-    <footer className="bg-[#E8DCC8] text-foreground">
+    <footer className="bg-[#D4C4A8] text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Brand */}
@@ -18,7 +18,7 @@ export default function Footer({ currentLang }: FooterProps) {
               <img src="/ritzlogo.png" alt="The Ritz Logo" className="h-12 w-auto" style={{filter: 'brightness(0) saturate(100%) invert(48%) sepia(15%) saturate(1088%) hue-rotate(346deg) brightness(91%) contrast(87%)'}} />
               <h3 className="text-2xl font-black uppercase tracking-[0.3em] text-primary">THE RITZ</h3>
             </div>
-            <p className="text-foreground/70 mb-6 text-lg">
+            <p className="text-foreground/70 mb-6 text-lg leading-relaxed">
               {t('footer.tagline')} • {t('footer.location')}
             </p>
             <div className="flex gap-4">
@@ -26,7 +26,7 @@ export default function Footer({ currentLang }: FooterProps) {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -34,7 +34,7 @@ export default function Footer({ currentLang }: FooterProps) {
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -61,13 +61,13 @@ export default function Footer({ currentLang }: FooterProps) {
           {/* Hours */}
           <div>
             <h4 className="font-black mb-6 uppercase tracking-[0.3em] text-sm text-primary">{t('contact.hours')}</h4>
-            <p className="text-foreground/70 text-sm">
+            <p className="text-foreground/70 text-sm leading-relaxed">
               Open Till Night
             </p>
           </div>
         </div>
 
-        <div className="border-t border-primary/20 mt-12 pt-8 text-center text-foreground/40 text-xs uppercase tracking-wider">
+        <div className="border-t border-primary/20 mt-12 pt-8 text-center text-foreground/40 text-xs uppercase tracking-[0.2em]">
           <p>&copy; {new Date().getFullYear()} The Ritz Lloret. All rights reserved.</p>
         </div>
       </div>
