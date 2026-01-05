@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { languages, type Language } from '../../i18n/languages';
+import { useTranslations } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = useTranslations(lang);
+
+const menuData = {
+  iceCoffees: [
+    { name: 'Iced Latte', description: 'Espresso, milk, ice, smooth, refreshing.', price: 4.00 },
+    { name: 'Frappe', description: 'Blended coffee, ice, creamy, sweet, cold.', price: 4.50 },
+    { name: 'Caramel Heaven', description: 'Blended coffee, caramel, ice, sweet, creamy.', price: 4.95 },
+    { name: 'Frosty Hangover', description: 'Blended coffee, ice, creamy, alcohol-infused delight.', price: 5.50 },
+  ],
+  slushPuppies: [
+    { name: 'Red Alert', description: 'Icy, sweet, red, refreshing, fruity blast.', price: 2.95 },
+    { name: 'Frost Fang', description: 'Icy, sweet, blue, cool, berry burst.', price: 2.95 },
+    { name: 'Polar Potion', description: 'Icy, red-blue, fruity, sweet, refreshing mix.', price: 3.00 },
+  ],
+  smoothies: [
+    { name: 'Strawberry Fashion', description: 'Strawberry, banana, smooth, sweet, creamy, refreshing delight.', price: 5.50 },
+    { name: 'Wonderful Fruits', description: 'Kiwi, melon and papaya. Tropical yet fresh.', price: 5.50 },
+    { name: 'Sweet Dreams', description: 'Sweet, creamy, orange, carrot and mango.', price: 5.50 },
+    { name: 'Red Power', description: 'Red and black fruits, energizing, smooth, bold, refreshing.', price: 5.50 },
+    { name: 'Pineapple Sunrise', description: 'Pineapple, pear and apple. Tropical, bright, smooth, sweet sunshine.', price: 5.50 },
+    { name: 'Greenday', description: 'Green fruits, fresh, healthy, broccoli, spinach, kiwi and banana.', price: 5.50 },
+  ],
+  proteinSmoothies: [
+    { name: 'Berry Strong', description: 'Berries, protein (20gr), energizing, smooth, fruity boost.', price: 6.50 },
+    { name: 'Monkey Gains', description: 'Banana, strawberry, protein (20gr), creamy, strong, muscle fuel.', price: 6.50 },
+  ],
+};
+---
+
+<Layout title={`${t('nav.menu')} - The Ritz`} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="/vlad-menu.jpg" alt="The Ritz Menu" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-background"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+        Special Drinks Menu
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto drop-shadow">
+        Brain Freezes and Vitamins
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Drinks with Photos -->
+  <section class="py-16 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold mb-8 text-center text-foreground">Featured Drinks</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-background rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square overflow-hidden">
+            <img src="/gin-tonic-pink.jpg" alt="Pink Gin Tonic" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-foreground">Pink Gin Tonic</h3>
+          </div>
+        </div>
+        
+        <div class="bg-background rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square overflow-hidden">
+            <img src="/choco-loco-cocktail.jpg" alt="Choco Loco" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-foreground">Choco Loco</h3>
+          </div>
+        </div>
+        
+        <div class="bg-background rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square overflow-hidden">
+            <img src="/sex-on-the-beach.jpg" alt="Sex on the Beach" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-foreground">Sex on the Beach</h3>
+          </div>
+        </div>
+        
+        <div class="bg-background rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square overflow-hidden">
+            <img src="/schnapz.jpg" alt="Schnapz" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-foreground">Schnapz</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Content -->
+  <section class="py-16 bg-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Ice Coffees -->
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold mb-8 text-primary flex items-center gap-3">
+          <span class="text-5xl">☕</span>
+          Ice Coffees
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {menuData.iceCoffees.map((item) => (
+            <div class="bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-2xl font-semibold text-foreground">{item.name}</h3>
+                <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+              </div>
+              <p class="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Smoothies -->
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold mb-8 text-primary flex items-center gap-3">
+          <span class="text-5xl">🥤</span>
+          Smoothies
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {menuData.smoothies.map((item) => (
+            <div class="bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-2xl font-semibold text-foreground">{item.name}</h3>
+                <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+              </div>
+              <p class="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Protein Smoothies -->
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold mb-8 text-primary flex items-center gap-3">
+          <span class="text-5xl">💪</span>
+          With Protein
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {menuData.proteinSmoothies.map((item) => (
+            <div class="bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-2xl font-semibold text-foreground">{item.name}</h3>
+                <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+              </div>
+              <p class="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Slush Puppies -->
+      <div class="mb-16">
+        <h2 class="text-4xl font-bold mb-8 text-primary flex items-center gap-3">
+          <span class="text-5xl">🐾</span>
+          Slush Puppies
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {menuData.slushPuppies.map((item) => (
+            <div class="bg-card p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow border">
+              <div class="flex justify-between items-start mb-3">
+                <h3 class="text-2xl font-semibold text-foreground">{item.name}</h3>
+                <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+              </div>
+              <p class="text-muted-foreground">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary text-primary-foreground">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Ready to Try Our Drinks?</h2>
+      <p class="text-xl mb-8 text-primary-foreground/90">
+        Visit us at Carrer del Carme 43, Lloret de Mar or reserve your table via WhatsApp
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/31618758383" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-md font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          Reserve via WhatsApp
+        </a>
+        <a 
+          href={`/${lang}/contact`}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary-foreground text-primary-foreground rounded-md font-semibold text-lg hover:bg-primary-foreground hover:text-primary transition-colors"
+        >
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+

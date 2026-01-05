@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { languages, type Language } from '../../i18n/languages';
+import { useTranslations } from '../../i18n/ui';
+import { Calendar, Clock, MapPin } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = useTranslations(lang);
+
+const events = [
+  {
+    title: 'Kingsday The Ritz',
+    date: 'April 27th, 2025',
+    time: '14:00 - 17:00',
+    description: 'Dutch Delights on the House',
+    details: 'You\'re invited to celebrate Kingsday at The Ritz! Join us for a special afternoon with complimentary Dutch treats and the best beach vibes.',
+    image: 'gradient-to-br from-orange-300 to-orange-500',
+  },
+  {
+    title: 'Summer Sunset Sessions',
+    date: 'Every Friday',
+    time: '18:00 - 22:00',
+    description: 'Live DJ & Cocktails',
+    details: 'Experience the magic of sunset with live DJ sets, signature cocktails, and the best beach atmosphere in Lloret de Mar.',
+    image: 'gradient-to-br from-pink-300 to-purple-500',
+  },
+  {
+    title: 'Smoothie Sunday',
+    date: 'Every Sunday',
+    time: '10:00 - 14:00',
+    description: 'Healthy Brunch & Fresh Juices',
+    details: 'Start your Sunday right with our special brunch menu featuring fresh smoothies, protein bowls, and healthy treats.',
+    image: 'gradient-to-br from-green-300 to-teal-500',
+  },
+];
+---
+
+<Layout title={`${t('nav.events')} - The Ritz`} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-accent/20 to-primary/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+        {t('nav.events')} & Special Occasions
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Join us for unforgettable moments at The Ritz
+      </p>
+    </div>
+  </section>
+
+  <!-- Featured Event - Kingsday -->
+  <section class="py-16 bg-background">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl overflow-hidden shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+          <!-- Image Side -->
+          <div class="relative aspect-square lg:aspect-auto">
+            <div class="absolute inset-0 bg-gradient-to-br from-orange-300 via-orange-400 to-orange-500 flex items-center justify-center">
+              <div class="text-center text-white p-8">
+                <img src="/ritzlogo.png" alt="The Ritz Logo" class="h-32 w-auto mx-auto mb-4 brightness-0 invert" />
+                <div class="text-6xl font-bold mb-2">KINGSDAY</div>
+                <div class="text-3xl">THE RITZ</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Content Side -->
+          <div class="p-8 lg:p-12 flex flex-col justify-center">
+            <div class="inline-block px-4 py-2 bg-accent text-white rounded-full text-sm font-semibold mb-4 self-start">
+              Featured Event
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+              Kingsday at The Ritz
+            </h2>
+            
+            <div class="space-y-4 mb-8">
+              <div class="flex items-center gap-3 text-lg">
+                <Calendar className="w-6 h-6 text-accent" />
+                <span class="text-foreground font-semibold">April 27th, 2025</span>
+              </div>
+              <div class="flex items-center gap-3 text-lg">
+                <Clock className="w-6 h-6 text-accent" />
+                <span class="text-foreground">14:00 - 17:00</span>
+              </div>
+              <div class="flex items-center gap-3 text-lg">
+                <MapPin className="w-6 h-6 text-accent" />
+                <span class="text-foreground">Carrer del Carme 43, Lloret de Mar</span>
+              </div>
+            </div>
+            
+            <p class="text-xl text-muted-foreground mb-8">
+              You're invited to celebrate Kingsday at The Ritz! Join us for a special afternoon with Dutch Delights on the House. 
+              Experience the best beach vibes while celebrating this special Dutch holiday with us.
+            </p>
+            
+            <div class="text-2xl font-bold text-accent mb-8">
+              OPEN TILL NIGHT
+            </div>
+            
+            <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="text-lg px-8 py-6">
+                Reserve Your Spot
+              </Button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- All Events -->
+  <section class="py-16 bg-card">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold mb-12 text-center text-foreground">
+        Upcoming Events & Regular Activities
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {events.map((event) => (
+          <div class="bg-background rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+            <div class={`aspect-video bg-${event.image} flex items-center justify-center`}>
+              <div class="text-white text-center p-6">
+                <div class="text-4xl mb-2">🎉</div>
+                <div class="font-bold text-xl">{event.title}</div>
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <div class="space-y-2 mb-4">
+                <div class="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Calendar className="w-4 h-4" />
+                  <span>{event.date}</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4" />
+                  <span>{event.time}</span>
+                </div>
+              </div>
+              
+              <h3 class="text-xl font-semibold mb-2 text-foreground">
+                {event.description}
+              </h3>
+              
+              <p class="text-muted-foreground mb-4">
+                {event.details}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-primary text-primary-foreground">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Want to Host Your Event?</h2>
+      <p class="text-xl mb-8 text-primary-foreground/90">
+        The Ritz is the perfect venue for private parties, celebrations, and corporate events. Contact us to discuss your special occasion!
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/31618758383" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-md font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          Contact Us on WhatsApp
+        </a>
+        <a 
+          href={`/${lang}/contact`}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary-foreground text-primary-foreground rounded-md font-semibold text-lg hover:bg-primary-foreground hover:text-primary transition-colors"
+        >
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+

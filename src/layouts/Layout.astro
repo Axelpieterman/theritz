@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+import type { Language } from '../i18n/languages';
+
+interface Props {
+  title: string;
+  description?: string;
+  lang: Language;
+}
+
+const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', lang } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+  </head>
+  <body>
+    <Navigation client:load currentLang={lang} />
+    <main class="pt-16">
+      <slot />
+    </main>
+    <Footer currentLang={lang} />
+  </body>
+</html>
+

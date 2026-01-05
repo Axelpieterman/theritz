@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* The Ritz Brand Colors - Beach/Coastal Theme */
+  --color-background: #EDE9E0; /* Cream/Sand */
+  --color-foreground: #3D2E24; /* Dark Brown */
+  --color-card: #E8E0D5;
+  --color-card-foreground: #3D2E24;
+  --color-primary: #9A6B4D; /* Terracotta/Brown */
+  --color-primary-foreground: #EDE9E0;
+  --color-secondary: #C9A882; /* Sand/Tan */
+  --color-secondary-foreground: #3D2E24;
+  --color-muted: #D9D1C7;
+  --color-muted-foreground: #6B5D52;
+  --color-accent: #E8945F; /* Coral/Orange accent */
+  --color-accent-foreground: #EDE9E0;
+  --color-destructive: #DC2626;
+  --color-destructive-foreground: #FAFAFA;
+  --color-border: #D4C8BA;
+  --color-input: #D4C8BA;
+  --color-ring: #9A6B4D;
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

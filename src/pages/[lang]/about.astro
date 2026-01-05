@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { languages, type Language } from '../../i18n/languages';
+import { useTranslations } from '../../i18n/ui';
+import { Heart, Users, Sparkles, Trophy } from 'lucide-react';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: Language };
+const t = useTranslations(lang);
+---
+
+<Layout title={`${t('nav.about')} - The Ritz`} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative py-20 bg-gradient-to-br from-primary/20 to-accent/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <img src="/ritzlogo.png" alt="The Ritz Logo" class="h-24 w-auto mx-auto mb-6" />
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+        About The Ritz
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Fun & Friends • Lloret de Mar
+      </p>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="py-20 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-6 text-foreground">Our Story</h2>
+        <div class="h-1 w-24 bg-accent mx-auto"></div>
+      </div>
+      
+      <div class="prose prose-lg max-w-none text-muted-foreground">
+        <p class="text-xl leading-relaxed mb-6">
+          Welcome to The Ritz, where the legendary Ibiza beach club atmosphere meets the beautiful shores of Lloret de Mar. 
+          We're more than just a restaurant – we're a destination for those seeking the perfect blend of relaxation, 
+          great food, and unforgettable moments.
+        </p>
+        
+        <p class="text-xl leading-relaxed mb-6">
+          Our journey began with a simple vision: to create a space where friends gather, families celebrate, 
+          and strangers become friends. Inspired by the carefree spirit of Mediterranean beach culture, 
+          we've crafted an experience that captures the essence of summer living all year round.
+        </p>
+        
+        <p class="text-xl leading-relaxed">
+          From our signature handcrafted cocktails to our fresh, locally-sourced cuisine, every detail at The Ritz 
+          is designed to transport you to a state of pure bliss. Our beachfront location provides the perfect backdrop 
+          for lazy afternoons, vibrant evenings, and everything in between.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-6 text-foreground">What We Stand For</h2>
+        <div class="h-1 w-24 bg-accent mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center">
+            <Heart className="w-10 h-10 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold mb-3 text-foreground">Passion</h3>
+          <p class="text-muted-foreground">
+            We pour our heart into every cocktail, every dish, and every interaction with our guests.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center">
+            <Users className="w-10 h-10 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold mb-3 text-foreground">Community</h3>
+          <p class="text-muted-foreground">
+            Building connections and creating a welcoming space where everyone feels at home.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center">
+            <Sparkles className="w-10 h-10 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold mb-3 text-foreground">Quality</h3>
+          <p class="text-muted-foreground">
+            Using only the finest ingredients and serving everything with attention to detail.
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-accent/20 flex items-center justify-center">
+            <Trophy className="w-10 h-10 text-accent" />
+          </div>
+          <h3 class="text-2xl font-semibold mb-3 text-foreground">Excellence</h3>
+          <p class="text-muted-foreground">
+            Striving to exceed expectations and create memorable experiences every single day.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Placeholder -->
+  <section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl font-bold mb-6 text-foreground">Experience The Ritz</h2>
+        <div class="h-1 w-24 bg-accent mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/bar-photo-1.jpg" alt="The Ritz Bar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/smoothies.jpg" alt="Fresh Smoothies" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/mojito.jpg" alt="Mojito Cocktail" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/hamburger.jpg" alt="Delicious Burger" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/acai-bowl.jpg" alt="Fresh Acai Bowl" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+        <div class="aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <img src="/sex-on-the-beach.jpg" alt="Sex on the Beach Cocktail" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary text-primary-foreground">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-bold mb-6">Ready to Experience The Ritz?</h2>
+      <p class="text-xl mb-8 text-primary-foreground/90">
+        Join us at Carrer del Carme 43, Lloret de Mar for an unforgettable experience
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a 
+          href="https://wa.me/31618758383" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary rounded-md font-semibold text-lg hover:opacity-90 transition-opacity"
+        >
+          Reserve via WhatsApp
+        </a>
+        <a 
+          href={`/${lang}/menu`}
+          class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary-foreground text-primary-foreground rounded-md font-semibold text-lg hover:bg-primary-foreground hover:text-primary transition-colors"
+        >
+          View Our Menu
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+

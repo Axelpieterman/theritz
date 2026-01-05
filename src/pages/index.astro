@@ -1,16 +1,281 @@
 ---
+// Redirect to default language
+import { defaultLang } from '../i18n/languages';
 
+return Astro.redirect(`/${defaultLang}`);
 ---
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background with overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/20 to-background z-0">
+      <!-- Placeholder for hero image -->
+      <div class="w-full h-full bg-gradient-to-br from-[#d4a574] via-[#c4956a] to-[#a87855] opacity-50"></div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+      <div class="mb-6">
+        <div class="text-6xl mb-4">🐢</div>
+        <h1 class="text-5xl md:text-7xl font-bold text-foreground mb-4 drop-shadow-lg">
+          {t('hero.title')}
+        </h1>
+        <p class="text-xl md:text-2xl text-primary font-semibold mb-2">
+          {t('hero.subtitle')}
+        </p>
+      </div>
+      
+      <p class="text-lg md:text-xl text-foreground/90 mb-8 max-w-2xl mx-auto">
+        {t('hero.description')}
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={`/${defaultLang}/menu`}>
+          <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto">
+            {t('hero.cta.menu')}
+          </Button>
+        </a>
+        <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer">
+          <Button size="lg" className="text-lg px-8 py-6 w-full sm:w-auto">
+            {t('hero.cta.reserve')}
+          </Button>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div class="w-6 h-10 border-2 border-primary rounded-full flex items-start justify-center p-2">
+        <div class="w-1 h-2 bg-primary rounded-full"></div>
+      </div>
+    </div>
+  </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <!-- Features Section -->
+  <section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground">
+        {t('features.title')}
+      </h2>
+      <div class="h-1 w-24 bg-accent mx-auto mb-16"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Feature 1: Cocktails -->
+        <div class="text-center group">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <Martini className="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-foreground">
+            {t('features.cocktails.title')}
+          </h3>
+          <p class="text-muted-foreground">
+            {t('features.cocktails.description')}
+          </p>
+        </div>
+        
+        <!-- Feature 2: Food -->
+        <div class="text-center group">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <UtensilsCrossed className="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-foreground">
+            {t('features.food.title')}
+          </h3>
+          <p class="text-muted-foreground">
+            {t('features.food.description')}
+          </p>
+        </div>
+        
+        <!-- Feature 3: Beach -->
+        <div class="text-center group">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <Waves className="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-foreground">
+            {t('features.beach.title')}
+          </h3>
+          <p class="text-muted-foreground">
+            {t('features.beach.description')}
+          </p>
+        </div>
+        
+        <!-- Feature 4: Music -->
+        <div class="text-center group">
+          <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            <Music className="w-12 h-12 text-primary" />
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-foreground">
+            {t('features.music.title')}
+          </h3>
+          <p class="text-muted-foreground">
+            {t('features.music.description')}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section with Image -->
+  <section class="py-20 bg-card">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Image -->
+        <div class="order-2 lg:order-1">
+          <div class="aspect-square rounded-lg bg-gradient-to-br from-primary/30 to-accent/30 shadow-2xl"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="order-1 lg:order-2">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-foreground">
+            Experience The Ritz
+          </h2>
+          <div class="h-1 w-24 bg-accent mb-6"></div>
+          <p class="text-lg text-muted-foreground mb-6">
+            Welcome to The Ritz, where Ibiza's legendary beach club atmosphere meets the stunning shores of Lloret de Mar. 
+          </p>
+          <p class="text-lg text-muted-foreground mb-6">
+            Our beachfront paradise offers the perfect escape with handcrafted cocktails, fresh Mediterranean cuisine, 
+            and an ambiance that captures the essence of summer living.
+          </p>
+          <p class="text-lg text-muted-foreground mb-8">
+            From sunrise smoothies to sunset cocktails, we're here to make every moment memorable.
+          </p>
+          <a href={`/${defaultLang}/about`}>
+            <Button size="lg" variant="default">
+              Learn More About Us
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature Drinks Preview -->
+  <section class="py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          Signature Drinks
+        </h2>
+        <div class="h-1 w-24 bg-accent mx-auto mb-6"></div>
+        <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+          From brain freezes to protein-packed smoothies, discover our specially crafted beverages
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Drink Card 1 -->
+        <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square bg-gradient-to-br from-red-200 to-red-400"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-2 text-foreground">Strawberry Fashion</h3>
+            <p class="text-muted-foreground mb-4">Strawberry, banana, smooth, sweet, creamy, refreshing delight.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-accent">€5.50</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink Card 2 -->
+        <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square bg-gradient-to-br from-blue-200 to-blue-400"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-2 text-foreground">Frost Fang</h3>
+            <p class="text-muted-foreground mb-4">Icy, sweet, blue, cool, berry burst.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-accent">€2.95</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drink Card 3 -->
+        <div class="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+          <div class="aspect-square bg-gradient-to-br from-orange-200 to-orange-400"></div>
+          <div class="p-6">
+            <h3 class="text-2xl font-semibold mb-2 text-foreground">Caramel Heaven</h3>
+            <p class="text-muted-foreground mb-4">Blended coffee, caramel, ice, sweet, creamy.</p>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-accent">€4.95</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href={`/${defaultLang}/menu`}>
+          <Button size="lg" variant="default">
+            View Full Menu
+          </Button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Location Section -->
+  <section class="py-20 bg-primary text-primary-foreground">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+          {t('contact.title')}
+        </h2>
+        <div class="h-1 w-24 bg-accent mx-auto"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Map placeholder -->
+        <div class="aspect-square rounded-lg bg-primary-foreground/10 flex items-center justify-center">
+          <div class="text-center">
+            <MapPin className="w-16 h-16 mx-auto mb-4 text-primary-foreground/60" />
+            <p class="text-primary-foreground/60">Map Integration Coming Soon</p>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-2xl font-semibold mb-3 flex items-center gap-2">
+              <MapPin className="w-6 h-6" />
+              Location
+            </h3>
+            <p class="text-xl text-primary-foreground/90">
+              {t('contact.address')}
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-3 flex items-center gap-2">
+              <Phone className="w-6 h-6" />
+              {t('contact.phone')}
+            </h3>
+            <a href="tel:+31618758383" class="text-xl text-primary-foreground/90 hover:text-accent transition-colors">
+              +31 6 18758383
+            </a>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-3">Hours</h3>
+            <p class="text-xl text-primary-foreground/90">
+              {t('contact.hours')}
+            </p>
+          </div>
+
+          <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer" class="inline-block">
+            <Button size="lg" variant="outline" className="bg-transparent border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              {t('contact.reserve')}
+            </Button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+</style>
