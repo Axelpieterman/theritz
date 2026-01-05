@@ -33,29 +33,29 @@ const t = useTranslations(lang);
       <div class="max-w-4xl mx-auto">
         <div class="luminous-card p-8 md:p-12 lg:p-16 text-center animate-fade-in-up">
           <!-- Architectural Logo -->
-          <div class="mb-8 md:mb-10 relative inline-block">
-            <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-[2.5] animate-pulse"></div>
+          <div class="mb-10 md:mb-12 relative inline-block">
+            <div class="absolute inset-0 bg-primary/30 blur-[120px] rounded-full scale-[3] animate-pulse"></div>
             <img 
               src="/ritzlogo.png" 
               alt="The Ritz Logo" 
-              class="h-20 md:h-24 w-auto relative z-10 brightness-0 invert opacity-90 drop-shadow-[0_0_20px_rgba(197,160,89,0.4)]" 
+              class="h-24 md:h-32 lg:h-36 w-auto relative z-10 brightness-0 invert drop-shadow-[0_0_30px_rgba(197,160,89,0.6)]" 
             />
           </div>
 
-          <div class="space-y-6 md:space-y-8">
-            <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter leading-[0.85] text-balance">
+          <div class="space-y-8 md:space-y-10">
+            <h1 class="text-5xl sm:text-7xl md:text-9xl lg:text-[10rem] font-black text-white uppercase tracking-tighter leading-[0.85] text-balance">
               {t('hero.title')}
             </h1>
             
-            <div class="flex items-center justify-center gap-4 md:gap-6">
-              <div class="h-[1px] w-12 md:w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-              <p class="text-primary font-bold uppercase tracking-[0.5em] md:tracking-[0.6em] text-[10px] md:text-sm whitespace-nowrap">
+            <div class="flex items-center justify-center gap-6 md:gap-8">
+              <div class="h-[2px] w-16 md:w-20 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+              <p class="text-primary font-bold uppercase tracking-[0.5em] md:tracking-[0.6em] text-xs md:text-base whitespace-nowrap">
                 {t('hero.subtitle')}
               </p>
-              <div class="h-[1px] w-12 md:w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+              <div class="h-[2px] w-16 md:w-20 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
             </div>
 
-            <p class="text-base md:text-xl lg:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium text-balance">
+            <p class="text-lg md:text-2xl lg:text-3xl text-white/90 max-w-3xl mx-auto leading-relaxed font-medium text-balance">
               {t('hero.description')}
             </p>
 
