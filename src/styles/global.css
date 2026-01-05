@@ -1,55 +1,69 @@
 @import "tailwindcss";
 
 @theme {
-  /* The Ritz Brand Colors - Beach/Coastal Theme */
-  --color-background: #EDE9E0; /* Cream/Sand */
-  --color-foreground: #3D2E24; /* Dark Brown */
-  --color-card: #E8E0D5;
-  --color-card-foreground: #3D2E24;
-  --color-primary: #9A6B4D; /* Terracotta/Brown */
-  --color-primary-foreground: #EDE9E0;
-  --color-secondary: #C9A882; /* Sand/Tan */
-  --color-secondary-foreground: #3D2E24;
-  --color-muted: #D9D1C7;
-  --color-muted-foreground: #6B5D52;
-  --color-accent: #E8945F; /* Coral/Orange accent */
-  --color-accent-foreground: #EDE9E0;
-  --color-destructive: #DC2626;
-  --color-destructive-foreground: #FAFAFA;
-  --color-border: #D4C8BA;
-  --color-input: #D4C8BA;
-  --color-ring: #9A6B4D;
+  --color-background: #FCF9F1; /* Creamy Sand */
+  --color-foreground: #2C2C2C; /* Deep Charcoal */
   
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
+  --color-primary: #C5A059; /* Sun-kissed Gold */
+  --color-primary-foreground: #FFFFFF;
+  
+  --color-secondary: #F3EAD3; /* Light Sand */
+  --color-secondary-foreground: #C5A059;
+  
+  --color-accent: #D4AF37; /* Pure Gold */
+  --color-accent-foreground: #FFFFFF;
+  
+  --color-muted: #F1F1F1;
+  --color-muted-foreground: #737373;
+  
+  --color-card: #FFFFFF;
+  --color-card-foreground: #2C2C2C;
+  
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animate-shimmer: shimmer 2s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
 }
 
-* {
-  border-color: var(--color-border);
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
 }
 
-body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
-  font-feature-settings: "rlig" 1, "calt" 1;
-}
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+  
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
 
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-}
+  .stripe-button {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--color-background);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+  .text-balance {
+    text-wrap: balance;
+  }
 }
