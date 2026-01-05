@@ -53,7 +53,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
             "max-w-[90rem] mx-auto transition-all duration-700 rounded-full border",
             isScrolled 
               ? "glass-dark py-3 px-6 md:px-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10" 
-              : "bg-white/5 backdrop-blur-sm py-4 md:py-5 px-6 md:px-10 border-white/5 shadow-none"
+              : "bg-transparent py-4 md:py-5 px-6 md:px-10 border-transparent shadow-none"
           )}
         >
           <div className="flex justify-between items-center">
@@ -67,12 +67,12 @@ export default function Navigation({ currentLang }: NavigationProps) {
                     "w-auto transition-all duration-700 group-hover:scale-110 group-hover:rotate-3",
                     isScrolled ? "h-8 md:h-10" : "h-10 md:h-14"
                   )}
-                  style={{filter: isScrolled ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%) invert(48%) sepia(15%) saturate(1088%) hue-rotate(346deg) brightness(91%) contrast(87%)'}}
+                  style={{filter: 'brightness(0) invert(1)'}}
                 />
               </div>
               <div className={cn(
-                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap",
-                isScrolled ? "text-white text-sm md:text-base" : "text-primary text-base md:text-xl"
+                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap text-white",
+                isScrolled ? "text-sm md:text-base" : "text-base md:text-xl"
               )}>
                 THE RITZ
               </div>
@@ -86,7 +86,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                   href={link.href} 
                   className={cn(
                     "text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link",
-                    isScrolled ? "text-white/60 hover:text-white" : "text-foreground/70 hover:text-primary"
+                    isScrolled ? "text-white/80 hover:text-white" : "text-white/80 hover:text-white"
                   )}
                 >
                   {link.label}
@@ -94,7 +94,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                 </a>
               ))}
               
-              <div className="h-4 w-[1px] bg-white/10 mx-2"></div>
+              <div className="h-4 w-[1px] bg-white/20 mx-2"></div>
 
               {/* Language Selector */}
               <div className="relative group/lang">
@@ -102,7 +102,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                   onClick={() => setShowLangMenu(!showLangMenu)}
                   className={cn(
                     "flex items-center gap-3 transition-all duration-500",
-                    isScrolled ? "text-white/60 hover:text-white" : "text-foreground/70 hover:text-primary"
+                    isScrolled ? "text-white/80 hover:text-white" : "text-white/80 hover:text-white"
                   )}
                 >
                   <Globe className="w-3.5 h-3.5" />
