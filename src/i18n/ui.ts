@@ -64,6 +64,12 @@ export const ui = {
     'drinks.badge.sweet': 'Sweet',
     'drinks.cta': 'View Full Menu',
     
+    // Reviews Section
+    'reviews.title': 'What Our Guests Say',
+    'reviews.subtitle': 'Loved by travelers from around the world',
+    'reviews.badge': 'TripAdvisor',
+    'reviews.cta': 'Read All Reviews',
+    
     // Contact Section
     'contact.title': 'Visit Us',
     'contact.subtitle': 'Located in the heart of Lloret de Mar, Costa Brava',
@@ -216,6 +222,12 @@ export const ui = {
     'drinks.badge.sweet': 'Dulce',
     'drinks.cta': 'Ver Menú Completo',
     
+    // Reviews Section
+    'reviews.title': 'Lo Que Dicen Nuestros Huéspedes',
+    'reviews.subtitle': 'Amado por viajeros de todo el mundo',
+    'reviews.badge': 'TripAdvisor',
+    'reviews.cta': 'Leer Todas las Reseñas',
+    
     // Contact Section
     'contact.title': 'Visítanos',
     'contact.subtitle': 'Ubicado en el corazón de Lloret de Mar, Costa Brava',
@@ -357,6 +369,13 @@ export const ui = {
     'drinks.badge.classic': 'Clàssic',
     'drinks.badge.sweet': 'Dolç',
     'drinks.cta': 'Veure Menú Complet',
+    
+    // Reviews Section
+    'reviews.title': 'El Que Diuen Els Nostres Hostes',
+    'reviews.subtitle': 'Estimat per viatgers d\'arreu del món',
+    'reviews.badge': 'TripAdvisor',
+    'reviews.cta': 'Llegir Totes les Ressenyes',
+    
     'contact.title': 'Visita\'ns',
     'contact.subtitle': 'Ubicat al cor de Lloret de Mar, Costa Brava',
     'contact.badge': 'Troba\'ns',
@@ -487,6 +506,13 @@ export const ui = {
     'drinks.badge.classic': 'Klassiek',
     'drinks.badge.sweet': 'Zoet',
     'drinks.cta': 'Bekijk Volledig Menu',
+    
+    // Reviews Section
+    'reviews.title': 'Wat Onze Gasten Zeggen',
+    'reviews.subtitle': 'Geliefd door reizigers van over de hele wereld',
+    'reviews.badge': 'TripAdvisor',
+    'reviews.cta': 'Lees Alle Reviews',
+    
     'contact.title': 'Bezoek Ons',
     'contact.subtitle': 'Gelegen in het hart van Lloret de Mar, Costa Brava',
     'contact.badge': 'Vind Ons',
@@ -617,6 +643,13 @@ export const ui = {
     'drinks.badge.classic': 'Classique',
     'drinks.badge.sweet': 'Sucré',
     'drinks.cta': 'Voir le Menu Complet',
+    
+    // Reviews Section
+    'reviews.title': 'Ce Que Disent Nos Invités',
+    'reviews.subtitle': 'Adoré par les voyageurs du monde entier',
+    'reviews.badge': 'TripAdvisor',
+    'reviews.cta': 'Lire Tous les Avis',
+    
     'contact.title': 'Visitez-Nous',
     'contact.subtitle': 'Situé au cœur de Lloret de Mar, Costa Brava',
     'contact.badge': 'Trouvez-Nous',
