@@ -346,39 +346,43 @@ const t = useTranslations(lang);
 
       <!-- TripAdvisor Widget Container -->
       <div class="max-w-5xl mx-auto">
-        <div id="TA_selfserveprop123" class="TA_selfserveprop">
-          <!-- 
-            INSTRUCTIONS TO ADD YOUR TRIPADVISOR WIDGET:
-            1. Go to https://www.tripadvisor.com/Widgets
-            2. Search for "The Ritz Lloret de Mar"
-            3. Choose a widget style (recommended: "Reviews" or "Badge")
-            4. Copy the widget code
-            5. Paste it here to replace this comment block
-            
-            The widget will show your real reviews automatically!
-          -->
-          
-          <!-- TEMPORARY PLACEHOLDER - Remove this when you add the TripAdvisor widget -->
-          <div class="bg-white rounded-2xl shadow-xl p-12 text-center border-4 border-dashed border-muted">
-            <div class="text-6xl mb-4">⭐⭐⭐⭐⭐</div>
-            <h3 class="text-2xl font-bold text-foreground mb-4">TripAdvisor Widget</h3>
-            <p class="text-muted-foreground mb-6 max-w-xl mx-auto">
-              Add your TripAdvisor widget code here to display your real reviews from TripAdvisor.
-            </p>
-            <div class="space-y-2 text-left max-w-md mx-auto bg-muted/50 rounded-lg p-4">
-              <p class="text-sm font-mono text-foreground">1. Visit tripadvisor.com/Widgets</p>
-              <p class="text-sm font-mono text-foreground">2. Search for "The Ritz"</p>
-              <p class="text-sm font-mono text-foreground">3. Select widget style</p>
-              <p class="text-sm font-mono text-foreground">4. Copy & paste code here</p>
-            </div>
+        <!-- TripAdvisor Widget -->
+        <div id="TA_cdsratingsonlynarrow649" class="TA_cdsratingsonlynarrow">
+          <ul id="sKyuBlm" class="TA_links lqTHtNFz">
+            <li id="YGkm7K5" class="BaGrSOuk">
+              <a target="_blank" href="https://www.tripadvisor.nl/Restaurant_Review-g494960-d8536741-Reviews-The_Ritz_Lloret-Lloret_de_Mar_Costa_Brava_Province_of_Girona_Catalonia.html">
+                <img src="https://www.tripadvisor.nl/img/cdsi/img2/branding/v2/Tripadvisor_lockup_horizontal_secondary_registered-11900-2.svg" alt="TripAdvisor"/>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <script async src="https://www.jqueryscript.net/demo/Display-TripAdvisor-Reviews-Ratings-JavaScript-Plugin/src/tripadvisor_api_v1.js"></script>
+        <script>
+          if (typeof window !== 'undefined') {
+            window.taValidate = window.taValidate || function(){
+              (window.taValidate.q=window.taValidate.q||[]).push(arguments)
+            };
+            window.taValidate('init',{
+              locationId: 8536741
+            });
+          }
+        </script>
+        
+        <!-- Fallback Display -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center mt-8">
+          <div class="flex items-center justify-center gap-4 mb-4">
+            <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg" alt="TripAdvisor" class="h-8" />
           </div>
+          <h3 class="text-2xl font-bold text-foreground mb-2">The Ritz Lloret</h3>
+          <div class="text-4xl mb-4">⭐⭐⭐⭐⭐</div>
+          <p class="text-muted-foreground mb-4">See what travelers are saying about us!</p>
         </div>
       </div>
 
       <!-- Link to TripAdvisor -->
       <div class="text-center mt-12">
         <a 
-          href="https://www.tripadvisor.com" 
+          href="https://www.tripadvisor.nl/Restaurant_Review-g494960-d8536741-Reviews-The_Ritz_Lloret-Lloret_de_Mar_Costa_Brava_Province_of_Girona_Catalonia.html" 
           target="_blank" 
           rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-8 py-4 text-lg font-semibold bg-green-600 text-white rounded-xl hover:bg-green-700 hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl"
