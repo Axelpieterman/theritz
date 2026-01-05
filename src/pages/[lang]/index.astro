@@ -17,7 +17,7 @@ const t = useTranslations(lang);
 
 <Layout title={`The Ritz - Lloret de Mar | ${t('hero.title')}`} lang={lang}>
   <!-- Hero Section -->
-  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+  <section class="relative h-screen flex items-center justify-center overflow-hidden -mt-24">
     <!-- Background Image with Ken Burns Effect -->
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-black/30 z-10"></div>
@@ -384,33 +384,34 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Contact/Location Section -->
-  <section class="py-24 bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground relative overflow-hidden">
-    <!-- Decorative Elements -->
-    <div class="absolute top-0 left-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-primary-foreground/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+  <section class="py-32 bg-secondary/50 relative overflow-hidden">
+    <!-- Subtle Background Elements -->
+    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"></div>
+    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-16">
-        <div class="inline-block mb-4 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full">
-          <span class="text-white font-semibold text-sm uppercase tracking-wider">📍 {t('contact.badge')}</span>
+      <div class="text-center mb-20">
+        <div class="inline-flex items-center gap-4 mb-6">
+          <div class="h-[1px] w-12 bg-primary/30"></div>
+          <span class="text-primary font-bold uppercase tracking-[0.5em] text-[10px]">Location</span>
+          <div class="h-[1px] w-12 bg-primary/30"></div>
         </div>
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
+        <h2 class="text-5xl md:text-8xl font-black mb-8 text-foreground uppercase tracking-tighter">
           {t('contact.title')}
         </h2>
-        <div class="h-1 w-32 bg-white mx-auto mb-6"></div>
-        <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        <p class="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
           {t('contact.subtitle')}
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <!-- Google Maps -->
-        <div class="aspect-square rounded-lg overflow-hidden shadow-2xl">
+        <div class="aspect-square rounded-[3rem] overflow-hidden shadow-2xl border border-primary/10">
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2971.8472874396487!2d2.8450!3d41.7020!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bae72e0d6f3f3f%3A0x0!2sCarrer%20del%20Carme%2C%2043%2C%2017310%20Lloret%20de%20Mar%2C%20Girona%2C%20Spain!5e0!3m2!1sen!2s!4v1234567890"
             width="100%" 
             height="100%" 
-            style="border:0;" 
+            style={{border: 0}} 
             allowfullscreen="" 
             loading="lazy" 
             referrerpolicy="no-referrer-when-downgrade"
@@ -418,16 +419,16 @@ const t = useTranslations(lang);
           ></iframe>
         </div>
 
-        <div class="space-y-6">
+        <div class="space-y-8">
           <!-- Location Card -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 border border-white/20">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6 text-white" />
+          <div class="bg-white rounded-[2rem] p-8 hover:shadow-xl transition-all duration-500 border border-primary/10 group">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+                <MapPin className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2 text-white">{t('contact.location')}</h3>
-                <p class="text-lg text-white/90 leading-relaxed">
+                <h3 class="text-sm font-black mb-3 text-primary uppercase tracking-[0.3em]">{t('contact.location')}</h3>
+                <p class="text-lg text-foreground font-medium leading-relaxed">
                   {t('contact.address')}
                 </p>
               </div>
@@ -435,14 +436,14 @@ const t = useTranslations(lang);
           </div>
 
           <!-- Phone Card -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 border border-white/20">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
-                <Phone className="w-6 h-6 text-white" />
+          <div class="bg-white rounded-[2rem] p-8 hover:shadow-xl transition-all duration-500 border border-primary/10 group">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+                <Phone className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2 text-white">{t('contact.phone')}</h3>
-                <a href="tel:+31618758383" class="text-lg text-white/90 hover:text-accent transition-colors">
+                <h3 class="text-sm font-black mb-3 text-primary uppercase tracking-[0.3em]">{t('contact.phone')}</h3>
+                <a href="tel:+31618758383" class="text-lg text-foreground font-medium hover:text-primary transition-colors">
                   +31 6 18758383
                 </a>
               </div>
@@ -450,26 +451,26 @@ const t = useTranslations(lang);
           </div>
 
           <!-- Hours Card -->
-          <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 border border-white/20">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-accent flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="bg-white rounded-[2rem] p-8 hover:shadow-xl transition-all duration-500 border border-primary/10 group">
+            <div class="flex items-start gap-5">
+              <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:scale-110 transition-all duration-500">
+                <svg class="w-6 h-6 text-primary group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
               </div>
               <div>
-                <h3 class="text-xl font-bold mb-2 text-white">{t('contact.hours')}</h3>
-                <p class="text-lg text-white/90">
-                  {t('contact.hours')}
+                <h3 class="text-sm font-black mb-3 text-primary uppercase tracking-[0.3em]">{t('contact.hours')}</h3>
+                <p class="text-lg text-foreground font-medium">
+                  Open Till Night
                 </p>
               </div>
             </div>
           </div>
 
           <!-- WhatsApp CTA -->
-          <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer" class="block">
-            <button class="w-full px-8 py-5 text-lg font-bold bg-white text-primary rounded-xl hover:bg-accent hover:text-white hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3">
-              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer" class="block mt-12">
+            <button class="w-full px-10 py-6 text-sm font-black uppercase tracking-[0.3em] bg-primary text-white rounded-full hover:bg-foreground hover:scale-105 transition-all duration-500 shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>
               {t('contact.reserve')}

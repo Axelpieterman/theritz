@@ -44,7 +44,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
       {/* Desktop & Mobile Top Nav */}
       <nav 
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-700 px-6 pt-6",
+          "fixed top-0 w-full z-[100] transition-all duration-700 px-6 pt-6",
           isScrolled ? "pt-4" : "pt-8"
         )}
       >
