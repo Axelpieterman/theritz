@@ -19,6 +19,10 @@
   --color-card: #FFFFFF;
   --color-card-foreground: #2C2C2C;
   
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-input: rgba(0, 0, 0, 0.1);
+  --color-ring: #C5A059;
+  
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
 
