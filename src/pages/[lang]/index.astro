@@ -17,10 +17,10 @@ const t = useTranslations(lang);
 
 <Layout title={`The Ritz - Lloret de Mar | ${t('hero.title')}`} lang={lang}>
   <!-- Hero Section -->
-  <section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden pt-16">
+  <section class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
     <!-- Background Image with Ken Burns Effect -->
     <div class="absolute inset-0 z-0">
-      <div class="absolute inset-0 bg-black/40 z-10"></div>
+      <div class="absolute inset-0 bg-black/50 z-10"></div>
       <img 
         src="/bar-photo-1.jpg" 
         alt="The Ritz Atmosphere" 
@@ -29,9 +29,9 @@ const t = useTranslations(lang);
     </div>
 
     <!-- Hero Content -->
-    <div class="container mx-auto px-4 relative z-20">
-      <div class="max-w-4xl mx-auto">
-        <div class="luminous-card p-10 md:p-24 text-center animate-fade-in-up">
+    <div class="container mx-auto px-4 md:px-6 relative z-20 py-32 md:py-40">
+      <div class="max-w-5xl mx-auto">
+        <div class="luminous-card p-8 md:p-16 lg:p-24 text-center animate-fade-in-up">
           <!-- Architectural Logo -->
           <div class="mb-12 relative inline-block">
             <div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full scale-[2.5] animate-pulse"></div>
@@ -42,32 +42,32 @@ const t = useTranslations(lang);
             />
           </div>
 
-          <div class="space-y-10">
-            <h1 class="text-5xl md:text-9xl font-black text-white uppercase tracking-tighter leading-[0.85] text-balance">
+          <div class="space-y-8 md:space-y-10">
+            <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black text-white uppercase tracking-tighter leading-[0.85] text-balance">
               {t('hero.title')}
             </h1>
             
-            <div class="flex items-center justify-center gap-6">
-              <div class="h-[1px] w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-              <p class="text-primary font-bold uppercase tracking-[0.6em] text-xs md:text-base whitespace-nowrap">
+            <div class="flex items-center justify-center gap-4 md:gap-6">
+              <div class="h-[1px] w-12 md:w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+              <p class="text-primary font-bold uppercase tracking-[0.5em] md:tracking-[0.6em] text-[10px] md:text-sm whitespace-nowrap">
                 {t('hero.subtitle')}
               </p>
-              <div class="h-[1px] w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+              <div class="h-[1px] w-12 md:w-16 bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
             </div>
 
-            <p class="text-lg md:text-2xl text-white/60 max-w-2xl mx-auto leading-relaxed font-medium text-balance">
+            <p class="text-base md:text-xl lg:text-2xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium text-balance">
               {t('hero.description')}
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center pt-12">
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center pt-8 md:pt-12">
               <a href={`/${lang}/menu`} class="group/btn">
-                <button class="w-full sm:w-auto rounded-full px-12 py-6 text-[11px] font-bold uppercase tracking-[0.3em] border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-700 shadow-2xl relative overflow-hidden">
+                <button class="w-full sm:w-auto rounded-full px-8 md:px-12 py-4 md:py-6 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.3em] border border-white/10 text-white hover:bg-white hover:text-black transition-all duration-700 shadow-2xl relative overflow-hidden">
                   <span class="relative z-10">{t('hero.cta.menu')}</span>
                   <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000"></div>
                 </button>
               </a>
               <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer" class="group/btn">
-                <button class="w-full sm:w-auto rounded-full px-12 py-6 text-[11px] font-bold uppercase tracking-[0.3em] bg-primary text-white hover:bg-white hover:text-black transition-all duration-700 shadow-[0_20px_40px_rgba(197,160,89,0.2)] flex items-center justify-center gap-3">
+                <button class="w-full sm:w-auto rounded-full px-8 md:px-12 py-4 md:py-6 text-[10px] md:text-[11px] font-bold uppercase tracking-[0.3em] bg-primary text-white hover:bg-white hover:text-black transition-all duration-700 shadow-[0_20px_40px_rgba(197,160,89,0.2)] flex items-center justify-center gap-2 md:gap-3">
                   <div class="relative flex h-2 w-2">
                     <div class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></div>
                     <div class="relative inline-flex rounded-full h-2 w-2 bg-white"></div>
@@ -77,10 +77,10 @@ const t = useTranslations(lang);
               </a>
             </div>
 
-            <div class="pt-12">
-              <div class="inline-flex items-center gap-4 px-6 py-3 bg-white/[0.03] rounded-full border border-white/5 backdrop-blur-xl">
+            <div class="pt-8 md:pt-12">
+              <div class="inline-flex items-center gap-3 md:gap-4 px-4 md:px-6 py-2 md:py-3 bg-white/[0.03] rounded-full border border-white/5 backdrop-blur-xl">
                 <div class="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></div>
-                <span class="text-[10px] font-bold text-white/40 uppercase tracking-[0.4em]">
+                <span class="text-[9px] md:text-[10px] font-bold text-white/50 uppercase tracking-[0.3em] md:tracking-[0.4em]">
                   {t('hero.location.badge')}
                 </span>
               </div>
@@ -91,9 +91,9 @@ const t = useTranslations(lang);
     </div>
 
     <!-- Animated Scroll Indicator -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 opacity-50 hover:opacity-100 transition-opacity">
-      <span class="text-[10px] font-bold text-white uppercase tracking-[0.5em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
-      <div class="w-[1px] h-16 bg-gradient-to-b from-primary to-transparent"></div>
+    <div class="absolute bottom-12 md:bottom-16 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-3 opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
+      <span class="text-[9px] font-black text-white uppercase tracking-[0.5em] rotate-180 [writing-mode:vertical-lr]">Scroll</span>
+      <div class="w-[1px] h-20 bg-gradient-to-b from-primary via-primary/50 to-transparent animate-pulse"></div>
     </div>
   </section>
 
