@@ -44,79 +44,80 @@ export default function Navigation({ currentLang }: NavigationProps) {
       {/* Desktop & Mobile Top Nav */}
       <nav 
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-500 px-4 pt-4",
-          isScrolled ? "pt-2" : "pt-6"
+          "fixed top-0 w-full z-50 transition-all duration-700 px-6 pt-6",
+          isScrolled ? "pt-4" : "pt-8"
         )}
       >
         <div 
           className={cn(
-            "max-w-6xl mx-auto transition-all duration-500 rounded-full border border-white/10",
+            "max-w-7xl mx-auto transition-all duration-700 rounded-full border",
             isScrolled 
-              ? "glass-dark py-2 px-6 shadow-2xl" 
-              : "bg-transparent py-4 px-8 border-transparent"
+              ? "glass-dark py-3 px-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10" 
+              : "bg-white/5 backdrop-blur-sm py-5 px-10 border-white/5 shadow-none"
           )}
         >
           <div className="flex justify-between items-center">
             {/* Logo Section */}
-            <a href={`/${currentLang}`} className="flex items-center gap-3 group">
+            <a href={`/${currentLang}`} className="flex items-center gap-4 group">
               <div className="relative">
                 <img 
                   src="/ritzlogo.png" 
                   alt="The Ritz Logo" 
                   className={cn(
-                    "w-auto transition-all duration-500 group-hover:scale-110",
+                    "w-auto transition-all duration-700 group-hover:scale-110 group-hover:rotate-3",
                     isScrolled ? "h-10" : "h-14"
                   )}
                   style={{filter: isScrolled ? 'brightness(0) invert(1)' : 'brightness(0) saturate(100%) invert(48%) sepia(15%) saturate(1088%) hue-rotate(346deg) brightness(91%) contrast(87%)'}}
                 />
               </div>
               <div className={cn(
-                "font-bold uppercase tracking-widest transition-all duration-500",
-                isScrolled ? "text-white text-lg" : "text-primary text-2xl"
+                "font-black uppercase tracking-[0.4em] transition-all duration-700",
+                isScrolled ? "text-white text-base" : "text-primary text-xl"
               )}>
                 THE RITZ
               </div>
             </a>
 
             {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-10">
+            <div className="hidden lg:flex items-center gap-12">
               {navLinks.map((link) => (
                 <a 
                   key={link.href}
                   href={link.href} 
                   className={cn(
-                    "text-[13px] font-bold uppercase tracking-[0.2em] transition-all duration-300 hover:scale-105",
-                    isScrolled ? "text-white/80 hover:text-white" : "text-foreground hover:text-primary"
+                    "text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link",
+                    isScrolled ? "text-white/60 hover:text-white" : "text-foreground/70 hover:text-primary"
                   )}
                 >
                   {link.label}
+                  <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-current transition-all duration-500 group-hover/link:w-full"></div>
                 </a>
               ))}
               
-              <div className="h-4 w-[1px] bg-white/20 mx-2"></div>
+              <div className="h-4 w-[1px] bg-white/10 mx-2"></div>
 
               {/* Language Selector */}
               <div className="relative group/lang">
                 <button
                   onClick={() => setShowLangMenu(!showLangMenu)}
                   className={cn(
-                    "flex items-center gap-2 transition-all duration-300",
-                    isScrolled ? "text-white/80 hover:text-white" : "text-foreground hover:text-primary"
+                    "flex items-center gap-3 transition-all duration-500",
+                    isScrolled ? "text-white/60 hover:text-white" : "text-foreground/70 hover:text-primary"
                   )}
                 >
-                  <Globe className="w-4 h-4" />
-                  <span className="text-[13px] font-bold uppercase tracking-widest">{currentLang}</span>
+                  <Globe className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">{currentLang}</span>
                 </button>
                 
-                <div className="absolute right-0 mt-4 py-3 w-44 glass-dark rounded-2xl opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-300 transform translate-y-2 group-hover/lang:translate-y-0 shadow-2xl border border-white/10">
+                <div className="absolute right-0 mt-6 py-4 w-48 glass-dark rounded-[2rem] opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-500 transform translate-y-4 group-hover/lang:translate-y-0 shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10">
                   {languages.map((lang) => (
                     <a
                       key={lang.code}
                       href={`/${lang.code}`}
-                      className="flex items-center justify-between px-5 py-2 text-[12px] font-bold uppercase tracking-widest text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+                      className="flex items-center justify-between px-6 py-2.5 text-[10px] font-black uppercase tracking-[0.3em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-300"
                     >
                       {lang.label}
-                      {currentLang === lang.code && <div className="w-1.5 h-1.5 rounded-full bg-primary" />}
+                      {currentLang === lang.code && <div className="w-1 h-1 rounded-full bg-primary shadow-[0_0_10px_rgba(197,160,89,0.8)]" />}
                     </a>
                   ))}
                 </div>
@@ -124,9 +125,8 @@ export default function Navigation({ currentLang }: NavigationProps) {
 
               <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer">
                 <Button 
-                  variant="default" 
                   className={cn(
-                    "rounded-full px-8 py-6 uppercase tracking-widest font-bold text-xs stripe-button",
+                    "rounded-full px-10 py-7 text-[10px] font-black uppercase tracking-[0.4em] stripe-button shadow-2xl",
                     isScrolled ? "bg-white text-black hover:bg-primary hover:text-white" : "bg-primary text-white"
                   )}
                 >

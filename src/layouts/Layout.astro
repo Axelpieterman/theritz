@@ -33,9 +33,12 @@ const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', la
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
   </head>
-  <body>
+  <body class="selection:bg-primary selection:text-white overflow-x-hidden">
+    <!-- Grain Overlay for Texture -->
+    <div class="grain"></div>
+    
     <Navigation client:load currentLang={lang} />
-    <main class="pt-16">
+    <main>
       <slot />
     </main>
     <Footer currentLang={lang} />

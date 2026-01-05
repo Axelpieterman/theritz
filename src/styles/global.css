@@ -52,15 +52,55 @@
 
 @layer components {
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
   }
   
   .glass-dark {
-    @apply bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.3)];
+  }
+
+  .luminous-card {
+    @apply relative overflow-hidden rounded-[3rem] border border-white/10 bg-black/40 backdrop-blur-3xl;
+    box-shadow: 
+      0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+      0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .luminous-card::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-20;
+    background: radial-gradient(circle at 50% 0%, rgba(197,160,89,0.3) 0%, transparent 70%);
   }
 
   .stripe-button {
-    @apply relative overflow-hidden transition-all duration-300 active:scale-95;
+    @apply relative overflow-hidden transition-all duration-500 active:scale-95;
+  }
+
+  .grain {
+    position: fixed;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background-image: url('https://raw.githubusercontent.com/fatih-ersoz/nextjs-portfolio/main/public/noise.png');
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+    animation: grain 8s steps(10) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -10%); }
+    20% { transform: translate(-15%, 5%); }
+    30% { transform: translate(7%, -25%); }
+    40% { transform: translate(-5%, 25%); }
+    50% { transform: translate(-15%, 10%); }
+    60% { transform: translate(15%, 0%); }
+    70% { transform: translate(0%, 15%); }
+    80% { transform: translate(3%, 35%); }
+    90% { transform: translate(-10%, 10%); }
   }
 
   .text-balance {
