@@ -44,16 +44,16 @@ export default function Navigation({ currentLang }: NavigationProps) {
       {/* Desktop & Mobile Top Nav */}
       <nav 
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-700 px-6 pt-6",
-          isScrolled ? "pt-4" : "pt-8"
+          "fixed top-0 w-full z-50 transition-all duration-700 px-6",
+          isScrolled ? "pt-3" : "pt-6"
         )}
       >
         <div 
           className={cn(
-            "max-w-[90rem] mx-auto transition-all duration-700 rounded-full border",
+            "max-w-[90rem] mx-auto transition-all duration-700 rounded-full border border-white/10 glass-dark shadow-[0_20px_50px_rgba(0,0,0,0.3)]",
             isScrolled 
-              ? "glass-dark py-3 px-6 md:px-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-white/10" 
-              : "bg-transparent py-4 md:py-5 px-6 md:px-10 border-transparent shadow-none"
+              ? "py-3 px-6 md:px-8" 
+              : "py-4 md:py-5 px-6 md:px-10"
           )}
         >
           <div className="flex justify-between items-center">
