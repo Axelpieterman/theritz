@@ -225,7 +225,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
               {t('hero.cta.reserve')}
             </button>
           </a>
-          <a href={`/${currentLang}/contact`} className="flex-1 flex flex-col items-center py-2 text-white/70 hover:text-white transition-colors">
+          <a href="https://maps.google.com/?q=Carrer+del+Carme+43+Lloret+de+Mar" target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center py-2 text-white/70 hover:text-white transition-colors">
             <div className="p-2 rounded-xl bg-white/5 mb-1"><MapPin className="w-4 h-4" /></div>
             <span className="text-[9px] font-bold uppercase tracking-tighter">Find Us</span>
           </a>
