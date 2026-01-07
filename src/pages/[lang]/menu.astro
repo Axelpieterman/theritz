@@ -94,14 +94,14 @@ const menuData = {
     { name: 'Polar Potion', description: 'Icy, red-blue, fruity, sweet, refreshing mix.', price: 3.00 },
   ],
   eveningGrill: [
-    { name: 'Satay de Pollo', number: '17', description: 'Chicken skewers grilled to perfection, served with satay sauce, crispy fries and fresh salad.', price: 14.95 },
-    { name: 'Medio Pollo', number: '18', description: 'Half chicken, juicy and tender, served with golden fries and fresh crunchy salad.', price: 16.95 },
-    { name: 'Bistec', number: '19', description: 'Juicy grilled steak, served with golden fries and fresh crunchy salad. Only cooked to perfection.', price: 18.95, note: 'Salsa de pimienta +€1.95' },
-    { name: 'Entrecot', number: '20', description: 'Juicy ribeye grilled to perfection, served with crispy fries and fresh crunchy salad. Only cooked to perfection.', price: 19.95, note: 'Salsa de pimienta +€1.95' },
+    { name: 'Chicken Satay', number: '17', description: 'Chicken skewers grilled to perfection, served with satay sauce, crispy fries and fresh salad.', price: 14.95 },
+    { name: 'Half Chicken', number: '18', description: 'Half chicken, juicy and tender, served with golden fries and fresh crunchy salad.', price: 16.95 },
+    { name: 'Grilled Steak', number: '19', description: 'Juicy grilled steak, served with golden fries and fresh crunchy salad. Cooked to perfection.', price: 18.95, note: 'Pepper sauce +€1.95' },
+    { name: 'Ribeye', number: '20', description: 'Juicy ribeye grilled to perfection, served with crispy fries and fresh crunchy salad. Cooked to perfection.', price: 19.95, note: 'Pepper sauce +€1.95' },
   ],
   eveningBurgers: [
     { name: 'Smash Hit', number: '21', description: 'Juicy beef patty, cheese, crispy edges, classic flavor.', price: 14.95 },
-    { name: 'Pollo Dulce', number: '22', description: 'Crispy chicken, fresh ingredients, tasty, satisfying. With fries.', price: 14.95 },
+    { name: 'Sweet Chicken', number: '22', description: 'Crispy chicken, fresh ingredients, tasty, satisfying. With fries.', price: 14.95 },
     { name: 'Kapsalon', number: '23', description: 'Fries covered with pulled chicken, melted cheese and fresh salad.', price: 12.50 },
   ],
   eveningPizza: [
@@ -113,7 +113,7 @@ const menuData = {
   eveningKids: [
     { name: 'Frikandel', number: '28', description: 'Classic Dutch deep-fried sausage. With fries, salad and ice cream.', price: 7.95 },
     { name: 'Kroket', number: '29', description: 'Dutch crispy croquette. With fries, salad and ice cream.', price: 7.95 },
-    { name: 'Nuggets de Pollo', number: '30', description: 'Chicken nuggets. With fries, salad and ice cream.', price: 9.50 },
+    { name: 'Chicken Nuggets', number: '30', description: 'Crispy chicken nuggets. With fries, salad and ice cream.', price: 9.50 },
   ],
   warmLunchStarters: [
     { name: 'Fresh Baguette', number: '1', description: 'Warm baguette served with creamy herb butter.', price: 4.75 },
@@ -534,7 +534,7 @@ const menuData = {
 
       <!-- Kids Menu -->
       <div>
-        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">👶 Niños @ The Ritz</h3>
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">👶 Kids @ The Ritz</h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {menuData.eveningKids.map((item) => (
             <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
