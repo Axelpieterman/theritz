@@ -170,4 +170,29 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .menu-card {
+    @apply group relative bg-white p-8 rounded-[2rem] transition-all duration-500 border-2 hover:-translate-y-2;
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-card:hover {
+    box-shadow: 
+      0 20px 48px rgba(197, 160, 89, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    border-color: rgba(197, 160, 89, 0.3);
+  }
+
+  .menu-card::before {
+    content: '';
+    @apply absolute inset-0 rounded-[2rem] pointer-events-none opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.03) 0%, transparent 60%);
+  }
+
+  .menu-card:hover::before {
+    opacity: 1;
+  }
 }
