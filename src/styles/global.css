@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #E8DCC8; /* Rich Beige */
+  --color-background: #FAF7F0; /* Light Beige */
   --color-foreground: #2C2C2C; /* Deep Charcoal */
   
   --color-primary: #C5A059; /* Sun-kissed Gold */
@@ -90,7 +90,7 @@
   }
 
   .bg-mesh {
-    background-color: #E8DCC8;
+    background-color: #FAF7F0;
     background-image: 
       radial-gradient(at 40% 20%, rgba(197, 160, 89, 0.08) 0px, transparent 50%),
       radial-gradient(at 80% 0%, rgba(212, 175, 55, 0.06) 0px, transparent 50%),
