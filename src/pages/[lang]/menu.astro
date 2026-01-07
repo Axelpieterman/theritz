@@ -125,34 +125,36 @@ const menuData = {
   </style>
 
   <!-- Menu Navigation Tabs -->
-  <section class="sticky top-20 z-40 bg-white/95 backdrop-blur-xl border-b border-primary/10 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="flex overflow-x-auto hide-scrollbar gap-2 py-4" id="menuTabs">
-        <a href="#cocktails" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🍹 Cocktails
-        </a>
-        <a href="#mocktails" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🥤 Mocktails
-        </a>
-        <a href="#breakfast" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🍳 Breakfast
-        </a>
-        <a href="#lunch" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🥖 Lunch
-        </a>
-        <a href="#warm-lunch" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🍲 Warm Lunch
-        </a>
-        <a href="#evening" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🌙 Evening
-        </a>
-        <a href="#desserts" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          🍰 Desserts
-        </a>
-        <a href="#drinks" class="menu-tab whitespace-nowrap px-6 py-3 rounded-full font-bold uppercase tracking-wider text-sm transition-all hover:bg-primary/10 hover:text-primary">
-          ☕ Drinks
-        </a>
-      </nav>
+  <section class="sticky top-20 md:top-24 z-40 px-6 md:px-8 py-3">
+    <div class="max-w-[90rem] mx-auto">
+      <div class="glass-dark rounded-full px-4 md:px-6 py-3 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10">
+        <nav class="flex overflow-x-auto hide-scrollbar gap-2" id="menuTabs">
+          <a href="#cocktails" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🍹 Cocktails
+          </a>
+          <a href="#mocktails" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🥤 Mocktails
+          </a>
+          <a href="#breakfast" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🍳 Breakfast
+          </a>
+          <a href="#lunch" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🥖 Lunch
+          </a>
+          <a href="#warm-lunch" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🍲 Warm Lunch
+          </a>
+          <a href="#evening" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🌙 Evening
+          </a>
+          <a href="#desserts" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            🍰 Desserts
+          </a>
+          <a href="#drinks" class="menu-tab whitespace-nowrap px-4 md:px-6 py-2 md:py-3 rounded-full font-bold uppercase tracking-wider text-[11px] md:text-xs transition-all text-white/70 hover:text-white hover:bg-white/10">
+            ☕ Drinks
+          </a>
+        </nav>
+      </div>
     </div>
   </section>
 
@@ -165,8 +167,9 @@ const menuData = {
       scrollbar-width: none;
     }
     .menu-tab.active {
-      background-color: rgb(197, 160, 89);
+      background-color: rgba(255, 255, 255, 0.15);
       color: white;
+      box-shadow: 0 0 20px rgba(197, 160, 89, 0.3);
     }
   </style>
 
@@ -227,7 +230,7 @@ const menuData = {
   </section>
 
   <!-- Cocktails Section -->
-  <section id="cocktails" class="py-32 bg-white relative overflow-hidden scroll-mt-32">
+  <section id="cocktails" class="py-32 bg-white relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -260,7 +263,7 @@ const menuData = {
   </section>
 
   <!-- Mocktails Section -->
-  <section id="mocktails" class="py-32 bg-mesh relative overflow-hidden scroll-mt-32">
+  <section id="mocktails" class="py-32 bg-mesh relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -293,7 +296,7 @@ const menuData = {
   </section>
 
   <!-- Breakfast Section -->
-  <section id="breakfast" class="py-32 bg-white relative overflow-hidden scroll-mt-32">
+  <section id="breakfast" class="py-32 bg-white relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -329,7 +332,7 @@ const menuData = {
   </section>
 
   <!-- Lunch Section -->
-  <section id="lunch" class="py-32 bg-mesh relative overflow-hidden scroll-mt-32">
+  <section id="lunch" class="py-32 bg-mesh relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -394,7 +397,7 @@ const menuData = {
   </section>
 
   <!-- Warm Lunch Section (Placeholder) -->
-  <section id="warm-lunch" class="py-32 bg-white relative overflow-hidden scroll-mt-32">
+  <section id="warm-lunch" class="py-32 bg-white relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -428,7 +431,7 @@ const menuData = {
   </section>
 
   <!-- Evening Menu Section (Placeholder) -->
-  <section id="evening" class="py-32 bg-mesh relative overflow-hidden scroll-mt-32">
+  <section id="evening" class="py-32 bg-mesh relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -462,7 +465,7 @@ const menuData = {
   </section>
 
   <!-- Desserts Section (Placeholder) -->
-  <section id="desserts" class="py-32 bg-white relative overflow-hidden scroll-mt-32">
+  <section id="desserts" class="py-32 bg-white relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -496,7 +499,7 @@ const menuData = {
   </section>
 
   <!-- Drinks Section -->
-  <section id="drinks" class="py-32 bg-mesh relative overflow-hidden scroll-mt-32">
+  <section id="drinks" class="py-32 bg-mesh relative overflow-hidden scroll-mt-40">
     <!-- Wave Top -->
     <div class="wave-divider wave-top">
       <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
