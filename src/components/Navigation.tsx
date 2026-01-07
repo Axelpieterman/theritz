@@ -13,7 +13,13 @@ interface NavigationProps {
 export default function Navigation({ currentLang, showMenuTabs = false }: NavigationProps) {
   const t = useTranslations(currentLang);
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(() => {
+    // Initialize based on actual scroll position
+    if (typeof window !== 'undefined') {
+      return window.scrollY > 20;
+    }
+    return false;
+  });
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [activeTab, setActiveTab] = useState('cocktails');
 
@@ -21,6 +27,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    // Set initial scroll state
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -196,7 +204,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                     key={tab.id}
                     href={tab.href}
                     className={cn(
-                      "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-bold uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-all duration-300",
+                      "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-all duration-300",
                       activeTab === tab.id 
                         ? "bg-primary/20 text-foreground" 
                         : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
@@ -246,7 +254,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block text-4xl font-bold text-white hover:text-primary transition-all duration-300 transform hover:translate-x-4"
+                  className="block text-4xl font-black text-white hover:text-primary transition-all duration-300 transform hover:translate-x-4"
                   style={{ transitionDelay: `${i * 50}ms` }}
                   onClick={() => setIsOpen(false)}
                 >
