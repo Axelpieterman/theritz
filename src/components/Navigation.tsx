@@ -103,7 +103,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                   <span className="text-[10px] font-black uppercase tracking-[0.4em]">{currentLang}</span>
                 </button>
                 
-                <div className="absolute right-0 mt-6 py-4 w-48 glass-dark rounded-[2rem] opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-500 transform translate-y-4 group-hover/lang:translate-y-0 shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/10">
+                <div className="absolute right-0 mt-6 py-4 w-48 glass-dark rounded-[2rem] opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-500 transform translate-y-4 group-hover/lang:translate-y-0">
                   {languages.map((lang) => (
                     <a
                       key={lang.code}
@@ -120,7 +120,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
               <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer">
                 <Button 
                   className={cn(
-                    "rounded-full px-10 py-7 text-[10px] font-black uppercase tracking-[0.4em] stripe-button shadow-2xl",
+                    "rounded-full px-10 py-7 text-[10px] font-black uppercase tracking-[0.4em] stripe-button",
                     isScrolled ? "bg-white text-black hover:bg-primary hover:text-white" : "bg-primary text-white"
                   )}
                 >
@@ -206,13 +206,13 @@ export default function Navigation({ currentLang }: NavigationProps) {
 
       {/* Mobile Sticky Quick Actions (Stripe Style) */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-sm">
-        <div className="glass-dark rounded-3xl p-2 flex items-center justify-between shadow-2xl border border-white/10">
+        <div className="glass-dark rounded-3xl p-2 flex items-center justify-between">
           <a href={`/${currentLang}/menu`} className="flex-1 flex flex-col items-center py-2 text-white/70 hover:text-white transition-colors">
             <div className="p-2 rounded-xl bg-white/5 mb-1"><Phone className="w-4 h-4" /></div>
             <span className="text-[9px] font-bold uppercase tracking-tighter">Contact</span>
           </a>
           <a href="https://wa.me/31618758383" className="flex-[2] px-2">
-            <button className="w-full bg-primary hover:bg-accent text-white py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all shadow-lg shadow-primary/20">
+            <button className="w-full bg-primary hover:bg-accent text-white py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all">
               {t('hero.cta.reserve')}
             </button>
           </a>
