@@ -341,22 +341,21 @@ const menuData = {
       </div>
 
       <!-- Baguettes -->
-      <div class="mb-20">
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">🥖</span>
-          Baguettes
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🥖 Baguettes</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.baguettes.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <div>
-                  {item.number && <span class="text-sm font-bold text-primary mb-2 block">{item.number}.</span>}
-                  <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <div>
+                    <span class="text-sm text-primary/60 font-bold">#{item.number}</span>
+                    <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  </div>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
                 </div>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
@@ -364,21 +363,20 @@ const menuData = {
 
       <!-- Salads -->
       <div>
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">🥗</span>
-          Salads
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🥗 Salads</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.salads.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <div>
-                  {item.number && <span class="text-sm font-bold text-primary mb-2 block">{item.number}.</span>}
-                  <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <div>
+                    <span class="text-sm text-primary/60 font-bold">#{item.number}</span>
+                    <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  </div>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
                 </div>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
@@ -688,57 +686,54 @@ const menuData = {
       </div>
 
       <!-- Ice Coffees -->
-      <div class="mb-20">
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">☕</span>
-          Ice Coffees
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">☕ Ice Coffees</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.iceCoffees.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       <!-- Smoothies -->
-      <div class="mb-20">
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">🥤</span>
-          Smoothies
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🥤 Smoothies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.smoothies.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
       </div>
 
       <!-- Protein Smoothies -->
-      <div class="mb-20">
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">💪</span>
-          With Protein
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">💪 With Protein</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.proteinSmoothies.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
@@ -746,18 +741,17 @@ const menuData = {
 
       <!-- Slush Puppies -->
       <div>
-        <h3 class="text-3xl font-black text-foreground uppercase tracking-tight mb-10 flex items-center gap-3">
-          <span class="text-4xl">🐾</span>
-          Slush Puppies
-        </h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🐾 Slush Puppies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           {menuData.slushPuppies.map((item) => (
-            <div class="group bg-white p-8 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-primary/10 hover:border-primary/30">
-              <div class="flex justify-between items-start mb-3">
-                <h4 class="text-xl font-bold text-foreground uppercase tracking-tight group-hover:text-primary transition-colors">{item.name}</h4>
-                <span class="text-2xl font-black text-primary">€{item.price.toFixed(2)}</span>
+            <div class="group menu-card">
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
               </div>
-              <p class="text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>
