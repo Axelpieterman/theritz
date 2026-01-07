@@ -39,7 +39,7 @@ const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', la
     <div class="grain"></div>
     
     <Navigation client:load currentLang={lang} showMenuTabs={showMenuTabs} />
-    <main class="pt-20 md:pt-24">
+    <main class={showMenuTabs ? "pt-32 md:pt-40" : "pt-20 md:pt-24"}>
       <slot />
     </main>
     <Footer currentLang={lang} />

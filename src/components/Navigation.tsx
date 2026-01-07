@@ -182,34 +182,37 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
             </button>
           </div>
 
-          {/* Integrated Menu Tabs */}
-          {showMenuTabs && (
-            <div className="mt-4 pt-4 border-t border-primary/20">
-              <nav className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center justify-center">
-                {menuTabs.map((tab, index) => (
-                  <>
-                    <a
-                      key={tab.id}
-                      href={tab.href}
-                      className={cn(
-                        "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-2 md:py-2.5 rounded-full font-bold uppercase tracking-[0.15em] text-[11px] md:text-[12px] transition-all duration-300",
-                        activeTab === tab.id 
-                          ? "bg-primary/20 text-foreground" 
-                          : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
-                      )}
-                    >
-                      {tab.label}
-                    </a>
-                    {index < menuTabs.length - 1 && (
-                      <div className="h-5 w-[1px] bg-primary/25 mx-1"></div>
-                    )}
-                  </>
-                ))}
-              </nav>
-            </div>
-          )}
         </div>
       </nav>
+
+      {/* Separate Menu Tabs Pill - Smaller Add-on Below Main Nav */}
+      {showMenuTabs && (
+        <div className="fixed top-24 md:top-28 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]">
+          <div className="glass-light rounded-full px-3 md:px-4 py-2">
+            <nav className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center">
+              {menuTabs.map((tab, index) => (
+                <>
+                  <a
+                    key={tab.id}
+                    href={tab.href}
+                    className={cn(
+                      "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-bold uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-all duration-300",
+                      activeTab === tab.id 
+                        ? "bg-primary/20 text-foreground" 
+                        : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
+                    )}
+                  >
+                    {tab.label}
+                  </a>
+                  {index < menuTabs.length - 1 && (
+                    <div className="h-4 w-[1px] bg-primary/25 mx-0.5"></div>
+                  )}
+                </>
+              ))}
+            </nav>
+          </div>
+        </div>
+      )}
 
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
