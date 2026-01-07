@@ -8,9 +8,10 @@ interface Props {
   title: string;
   description?: string;
   lang: Language;
+  showMenuTabs?: boolean;
 }
 
-const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', lang } = Astro.props;
+const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', lang, showMenuTabs = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -37,7 +38,7 @@ const { title, description = 'The Ritz - Ibiza Beach Vibes in Lloret de Mar', la
     <!-- Grain Overlay for Texture -->
     <div class="grain"></div>
     
-    <Navigation client:load currentLang={lang} />
+    <Navigation client:load currentLang={lang} showMenuTabs={showMenuTabs} />
     <main class="pt-20 md:pt-24">
       <slot />
     </main>

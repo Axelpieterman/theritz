@@ -7,13 +7,15 @@ import { cn } from '../lib/utils';
 
 interface NavigationProps {
   currentLang: Language;
+  showMenuTabs?: boolean;
 }
 
-export default function Navigation({ currentLang }: NavigationProps) {
+export default function Navigation({ currentLang, showMenuTabs = false }: NavigationProps) {
   const t = useTranslations(currentLang);
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const [activeTab, setActiveTab] = useState('cocktails');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +24,48 @@ export default function Navigation({ currentLang }: NavigationProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Handle active tab highlighting for menu page
+  useEffect(() => {
+    if (!showMenuTabs) return;
+
+    const sections = menuTabs.map(tab => document.getElementById(tab.id)).filter(Boolean);
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-100px 0px -50% 0px',
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, [showMenuTabs]);
+
+  const menuTabs = [
+    { id: 'cocktails', label: '🍹 Cocktails', href: '#cocktails' },
+    { id: 'mocktails', label: '🥤 Mocktails', href: '#mocktails' },
+    { id: 'breakfast', label: '🍳 Breakfast', href: '#breakfast' },
+    { id: 'lunch', label: '🥖 Lunch', href: '#lunch' },
+    { id: 'warm-lunch', label: '🍲 Warm Lunch', href: '#warm-lunch' },
+    { id: 'evening', label: '🌙 Evening', href: '#evening' },
+    { id: 'desserts', label: '🍰 Desserts', href: '#desserts' },
+    { id: 'drinks', label: '☕ Drinks', href: '#drinks' },
+  ];
 
   const languages = [
     { code: 'en', label: 'English' },
@@ -137,8 +181,45 @@ export default function Navigation({ currentLang }: NavigationProps) {
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
+          {/* Integrated Menu Tabs */}
+          {showMenuTabs && (
+            <div className="mt-4 pt-4 border-t border-primary/20">
+              <nav className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center justify-center">
+                {menuTabs.map((tab, index) => (
+                  <>
+                    <a
+                      key={tab.id}
+                      href={tab.href}
+                      className={cn(
+                        "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-2 md:py-2.5 rounded-full font-bold uppercase tracking-[0.15em] text-[11px] md:text-[12px] transition-all duration-300",
+                        activeTab === tab.id 
+                          ? "bg-primary/20 text-foreground" 
+                          : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
+                      )}
+                    >
+                      {tab.label}
+                    </a>
+                    {index < menuTabs.length - 1 && (
+                      <div className="h-5 w-[1px] bg-primary/25 mx-1"></div>
+                    )}
+                  </>
+                ))}
+              </nav>
+            </div>
+          )}
         </div>
       </nav>
+
+      <style>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
 
       {/* Mobile Fullscreen Overlay */}
       <div 
