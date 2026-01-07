@@ -50,10 +50,10 @@ export default function Navigation({ currentLang }: NavigationProps) {
       >
         <div 
           className={cn(
-            "max-w-[90rem] mx-auto transition-all duration-700 rounded-full border border-white/10 glass-dark",
+            "max-w-[90rem] mx-auto transition-all duration-700 rounded-full glass-dark",
             isScrolled 
-              ? "py-3 px-6 md:px-8" 
-              : "py-4 md:py-5 px-6 md:px-10"
+              ? "py-3 px-6 md:px-8 border-2 border-primary/30" 
+              : "py-4 md:py-5 px-6 md:px-10 border-2 border-white/10"
           )}
         >
           <div className="flex justify-between items-center">
