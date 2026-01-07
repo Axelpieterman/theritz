@@ -13,13 +13,7 @@ interface NavigationProps {
 export default function Navigation({ currentLang, showMenuTabs = false }: NavigationProps) {
   const t = useTranslations(currentLang);
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(() => {
-    // Initialize based on actual scroll position
-    if (typeof window !== 'undefined') {
-      return window.scrollY > 20;
-    }
-    return false;
-  });
+  const [isScrolled, setIsScrolled] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [activeTab, setActiveTab] = useState('cocktails');
 
@@ -27,7 +21,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    // Set initial scroll state
+    // Check scroll position immediately on mount
     handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
