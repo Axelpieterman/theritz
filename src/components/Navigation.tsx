@@ -67,12 +67,12 @@ export default function Navigation({ currentLang }: NavigationProps) {
                     "w-auto transition-all duration-700 group-hover:scale-110 group-hover:rotate-3",
                     isScrolled ? "h-8 md:h-10" : "h-10 md:h-14"
                   )}
-                  style={{filter: 'brightness(0) invert(1)'}}
+                  style={{filter: isScrolled ? 'none' : 'brightness(0) invert(1)'}}
                 />
               </div>
               <div className={cn(
-                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap text-white",
-                isScrolled ? "text-sm md:text-base" : "text-base md:text-xl"
+                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap",
+                isScrolled ? "text-sm md:text-base text-foreground" : "text-base md:text-xl text-white"
               )}>
                 THE RITZ
               </div>
@@ -86,7 +86,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                   href={link.href} 
                   className={cn(
                     "text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link",
-                    isScrolled ? "text-white/80 hover:text-white" : "text-white/80 hover:text-white"
+                    isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"
                   )}
                 >
                   {link.label}
@@ -94,7 +94,10 @@ export default function Navigation({ currentLang }: NavigationProps) {
                 </a>
               ))}
               
-              <div className="h-4 w-[1px] bg-white/20 mx-2"></div>
+              <div className={cn(
+                "h-4 w-[1px] mx-2",
+                isScrolled ? "bg-foreground/20" : "bg-white/20"
+              )}></div>
 
               {/* Language Selector */}
               <div className="relative group/lang">
@@ -102,7 +105,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
                   onClick={() => setShowLangMenu(!showLangMenu)}
                   className={cn(
                     "flex items-center gap-3 transition-all duration-500",
-                    isScrolled ? "text-white/80 hover:text-white" : "text-white/80 hover:text-white"
+                    isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"
                   )}
                 >
                   <Globe className="w-3.5 h-3.5" />
