@@ -93,6 +93,47 @@ const menuData = {
     { name: 'Frost Fang', description: 'Icy, sweet, blue, cool, berry burst.', price: 2.95 },
     { name: 'Polar Potion', description: 'Icy, red-blue, fruity, sweet, refreshing mix.', price: 3.00 },
   ],
+  eveningBurgers: [
+    { name: 'Smash Burger', description: 'Juicy beef, cheese, crispy edges, classic flavor.', price: 13.00 },
+    { name: 'Chicken Burger', description: 'Crispy chicken, fresh toppings, tasty, satisfying.', price: 5.00 },
+  ],
+  eveningWraps: [
+    { name: "Chick 'N' Roll", description: 'Grilled chicken, fresh veggies, tasty, wrapped delight.', price: 5.00 },
+  ],
+  eveningSides: [
+    { name: 'French Fries', description: 'Crispy, golden, salty, perfect side.', price: 5.00 },
+    { name: 'Sweet Fries', description: 'Sweet potato, crispy, slightly sweet, delicious.', price: 5.00 },
+    { name: 'Dutch Delight', description: 'Classic Dutch sausage, savory, fried perfection.', price: 5.00 },
+    { name: 'Dutch Delight Crunchy', description: 'Crispy outside, creamy inside, Dutch favorite.', price: 5.00 },
+  ],
+  eveningPizza: [
+    { name: 'Margheritta', description: 'Tomato, mozzarella, basil, simple, classic perfection.', price: 12.00 },
+    { name: 'Salami', description: 'Tomato, mozzarella, salami, savory, crispy crust.', price: 14.00 },
+    { name: 'Hawai', description: 'Tomato, mozzarella, ham, pineapple, sweet-savory.', price: 14.00 },
+    { name: 'Chicken', description: 'Chicken, BBQ sauce, cheese, smoky, flavorful.', price: 15.00 },
+  ],
+  dessertsCakes: [
+    { name: 'Cheesecake', description: 'Creamy cheesecake with a buttery crust.', price: 4.95 },
+    { name: 'Lemon Meringue', description: 'Tangy lemon pie topped with fluffy meringue.', price: 4.95 },
+  ],
+  dessertsChoco: [
+    { name: 'Coulant Choco', description: 'Warm molten chocolate cake with a rich, gooey center.', price: 4.95 },
+    { name: 'Chocolate Mousse', description: 'Light and airy chocolate mousse with an intense cocoa flavor.', price: 4.95 },
+  ],
+  dessertsIceCream: [
+    { name: 'Panna Cotta', description: 'Creamy Italian dessert with a smooth, silky texture.', price: 4.95 },
+    { name: 'Dame Blanche', description: 'Vanilla ice cream with chocolate sauce.', price: 5.50 },
+  ],
+  dessertsCoffee: [
+    { name: 'Frappe', description: 'Blended coffee, ice, creamy, sweet, cold.', price: 4.50 },
+    { name: 'Caramel Heaven', description: 'Blended coffee, caramel, ice, sweet, creamy.', price: 4.50 },
+  ],
+  dessertsSorbets: [
+    { name: 'Sorbet Trio', description: 'Three refreshing scoops of fruit sorbet, the perfect chilled treat.', price: 5.50 },
+  ],
+  dessertsAlcohol: [
+    { name: 'Irish Coffee', description: 'Coffee with Irish whiskey and cream.', price: 7.00 },
+  ],
 };
 ---
 
@@ -353,56 +394,226 @@ const menuData = {
     </div>
   </section>
 
-  <!-- Evening Menu Section (Placeholder) -->
+  <!-- Evening Menu Section -->
   <section id="evening" class="pt-12 pb-32 bg-mesh relative overflow-hidden scroll-mt-40 border-t border-primary/10">
     <div class="orb w-[700px] h-[700px] bg-purple-500/5 top-[-300px] left-[-200px]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16 space-y-6">
-        <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">Dinner Time Excellence</p>
+        <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">Nights Full of Flavor</p>
         <h2 class="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter leading-none">
           Evening Menu
         </h2>
         <div class="h-[2px] w-24 bg-primary mx-auto"></div>
         <p class="text-xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed mt-8">
-          Coming soon! Our evening dining experience is being crafted.
+          Delicious burgers, wraps, pizzas and sides for your perfect evening.
         </p>
       </div>
-      
-      <div class="max-w-2xl mx-auto bg-white/80 backdrop-blur-sm p-12 rounded-[2rem] border border-primary/20 text-center">
-        <div class="text-6xl mb-6">🌙</div>
-        <p class="text-lg text-muted-foreground mb-6">
-          Our evening menu is in development. Contact us for today's dinner specials and reservations!
-        </p>
-        <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-accent transition-all">
-          Reserve Your Table
-        </a>
+
+      <!-- Burgers -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍔 Burgers</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.eveningBurgers.map((item) => (
+            <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Wraps -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🌯 Wraps</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.eveningWraps.map((item) => (
+            <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Sides -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍟 Sides</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.eveningSides.map((item) => (
+            <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Pizza -->
+      <div>
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍕 Pizza</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.eveningPizza.map((item) => (
+            <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Desserts Section (Placeholder) -->
+  <!-- Desserts Section -->
   <section id="desserts" class="pt-12 pb-32 bg-white relative overflow-hidden scroll-mt-40 border-t border-primary/10">
     <div class="orb w-[500px] h-[500px] bg-pink-500/5 bottom-[-100px] right-[10%]"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-16 space-y-6">
-        <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">Sweet Indulgence</p>
+        <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">Sweet Endings</p>
         <h2 class="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter leading-none">
           Desserts
         </h2>
         <div class="h-[2px] w-24 bg-primary mx-auto"></div>
         <p class="text-xl text-muted-foreground max-w-2xl mx-auto font-medium leading-relaxed mt-8">
-          Coming soon! Our dessert selection is being perfected.
+          Indulge in our delicious selection of cakes, chocolate delights, and refreshing treats.
         </p>
       </div>
-      
-      <div class="max-w-2xl mx-auto bg-background/50 backdrop-blur-sm p-12 rounded-[2rem] border border-primary/20 text-center">
-        <div class="text-6xl mb-6">🍰</div>
-        <p class="text-lg text-muted-foreground mb-6">
-          Our dessert menu is coming soon. Ask our staff about today's sweet treats!
-        </p>
-        <a href={`/${lang}/contact`} class="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-bold uppercase tracking-wider text-sm hover:bg-accent transition-all">
-          Contact Us
-        </a>
+
+      <!-- Cakes & Pies -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🥧 Cakes & Pies</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsCakes.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Choco Delights -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍫 Choco Delights</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsChoco.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Ice Cream -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍨 Creamy</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsIceCream.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Coffee Specials -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">☕ Coffee Specials</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsCoffee.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Sorbets -->
+      <div class="mb-16">
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🍧 Sorbets</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsSorbets.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- With Alcohol -->
+      <div>
+        <h3 class="text-3xl font-bold mb-8 text-foreground text-center">🥃 With Alcohol</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {menuData.dessertsAlcohol.map((item) => (
+            <div class="group relative bg-background/50 backdrop-blur-sm p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem]"></div>
+              <div class="relative z-10">
+                <div class="flex justify-between items-start mb-3">
+                  <h3 class="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">{item.name}</h3>
+                  <span class="text-2xl font-bold text-accent">€{item.price.toFixed(2)}</span>
+                </div>
+                <p class="text-[15px] text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
