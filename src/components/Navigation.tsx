@@ -52,8 +52,8 @@ export default function Navigation({ currentLang }: NavigationProps) {
           className={cn(
             "max-w-[90rem] mx-auto transition-all duration-700 rounded-full glass-dark",
             isScrolled 
-              ? "py-3 px-6 md:px-8 border-2 border-primary/30" 
-              : "py-4 md:py-5 px-6 md:px-10 border-2 border-white/10"
+              ? "py-3 px-6 md:px-8" 
+              : "py-4 md:py-5 px-6 md:px-10"
           )}
         >
           <div className="flex justify-between items-center">
@@ -67,12 +67,12 @@ export default function Navigation({ currentLang }: NavigationProps) {
                     "w-auto transition-all duration-700 group-hover:scale-110 group-hover:rotate-3",
                     isScrolled ? "h-8 md:h-10" : "h-10 md:h-14"
                   )}
-                  style={{filter: isScrolled ? 'none' : 'brightness(0) invert(1)'}}
+                  style={{filter: 'none'}}
                 />
               </div>
               <div className={cn(
-                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap",
-                isScrolled ? "text-sm md:text-base text-foreground" : "text-base md:text-xl text-white"
+                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap text-foreground",
+                isScrolled ? "text-sm md:text-base" : "text-base md:text-xl"
               )}>
                 THE RITZ
               </div>
@@ -84,29 +84,20 @@ export default function Navigation({ currentLang }: NavigationProps) {
                 <a 
                   key={link.href}
                   href={link.href} 
-                  className={cn(
-                    "text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link",
-                    isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"
-                  )}
+                  className="text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link text-foreground/70 hover:text-foreground"
                 >
                   {link.label}
                   <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-current transition-all duration-500 group-hover/link:w-full"></div>
                 </a>
               ))}
               
-              <div className={cn(
-                "h-4 w-[1px] mx-2",
-                isScrolled ? "bg-foreground/20" : "bg-white/20"
-              )}></div>
+              <div className="h-4 w-[1px] mx-2 bg-foreground/20"></div>
 
               {/* Language Selector */}
               <div className="relative group/lang">
                 <button
                   onClick={() => setShowLangMenu(!showLangMenu)}
-                  className={cn(
-                    "flex items-center gap-3 transition-all duration-500",
-                    isScrolled ? "text-foreground/70 hover:text-foreground" : "text-white/80 hover:text-white"
-                  )}
+                  className="flex items-center gap-3 transition-all duration-500 text-foreground/70 hover:text-foreground"
                 >
                   <Globe className="w-3.5 h-3.5" />
                   <span className="text-[10px] font-black uppercase tracking-[0.4em]">{currentLang}</span>
@@ -141,10 +132,7 @@ export default function Navigation({ currentLang }: NavigationProps) {
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "md:hidden p-2 rounded-full transition-all duration-300",
-                isScrolled ? "text-white bg-white/10" : "text-foreground bg-black/5"
-              )}
+              className="md:hidden p-2 rounded-full transition-all duration-300 text-foreground bg-primary/10"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
