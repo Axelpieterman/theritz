@@ -79,28 +79,28 @@ export default function Navigation({ currentLang }: NavigationProps) {
             </a>
 
             {/* Desktop Links */}
-            <div className="hidden lg:flex items-center gap-12">
+            <div className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => (
                 <a 
                   key={link.href}
                   href={link.href} 
-                  className="text-[10px] font-black uppercase tracking-[0.4em] transition-all duration-500 hover:scale-110 relative group/link text-foreground/70 hover:text-foreground"
+                  className="text-[11px] font-black uppercase tracking-[0.35em] transition-all duration-500 hover:scale-105 relative group/link text-foreground/70 hover:text-foreground"
                 >
                   {link.label}
                   <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-current transition-all duration-500 group-hover/link:w-full"></div>
                 </a>
               ))}
               
-              <div className="h-4 w-[1px] mx-2 bg-foreground/20"></div>
+              <div className="h-5 w-[1px] mx-1 bg-foreground/20"></div>
 
               {/* Language Selector */}
               <div className="relative group/lang">
                 <button
                   onClick={() => setShowLangMenu(!showLangMenu)}
-                  className="flex items-center gap-3 transition-all duration-500 text-foreground/70 hover:text-foreground"
+                  className="flex items-center gap-2.5 transition-all duration-500 text-foreground/70 hover:text-foreground"
                 >
-                  <Globe className="w-3.5 h-3.5" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.4em]">{currentLang}</span>
+                  <Globe className="w-4 h-4" />
+                  <span className="text-[11px] font-black uppercase tracking-[0.35em]">{currentLang}</span>
                 </button>
                 
                 <div className="absolute right-0 mt-6 py-4 w-48 glass-dark rounded-[2rem] opacity-0 invisible group-hover/lang:opacity-100 group-hover/lang:visible transition-all duration-500 transform translate-y-4 group-hover/lang:translate-y-0">
@@ -120,8 +120,8 @@ export default function Navigation({ currentLang }: NavigationProps) {
               <a href="https://wa.me/31618758383" target="_blank" rel="noopener noreferrer">
                 <Button 
                   className={cn(
-                    "rounded-full px-10 py-7 text-[10px] font-black uppercase tracking-[0.4em] stripe-button",
-                    isScrolled ? "bg-white text-black hover:bg-primary hover:text-white" : "bg-primary text-white"
+                    "rounded-full px-8 py-5 text-[11px] font-black uppercase tracking-[0.3em] stripe-button transition-all duration-500",
+                    isScrolled ? "bg-primary text-white hover:bg-foreground hover:text-white" : "bg-primary text-white hover:bg-foreground hover:text-white"
                   )}
                 >
                   {t('hero.cta.reserve')}
@@ -206,19 +206,19 @@ export default function Navigation({ currentLang }: NavigationProps) {
 
       {/* Mobile Sticky Quick Actions (Stripe Style) */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden w-[90%] max-w-sm">
-        <div className="glass-dark rounded-3xl p-2 flex items-center justify-between">
-          <a href={`/${currentLang}/menu`} className="flex-1 flex flex-col items-center py-2 text-white/70 hover:text-white transition-colors">
-            <div className="p-2 rounded-xl bg-white/5 mb-1"><Phone className="w-4 h-4" /></div>
-            <span className="text-[9px] font-bold uppercase tracking-tighter">Contact</span>
+        <div className="glass-dark rounded-3xl p-2.5 flex items-center justify-between">
+          <a href={`/${currentLang}/menu`} className="flex-1 flex flex-col items-center py-2 text-foreground/70 hover:text-foreground transition-colors">
+            <div className="p-2 rounded-xl bg-primary/10 mb-1"><Phone className="w-4 h-4" /></div>
+            <span className="text-[9px] font-bold uppercase tracking-tight">Contact</span>
           </a>
           <a href="https://wa.me/31618758383" className="flex-[2] px-2">
-            <button className="w-full bg-primary hover:bg-accent text-white py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest transition-all">
+            <button className="w-full bg-primary hover:bg-foreground text-white py-3.5 rounded-2xl text-[11px] font-bold uppercase tracking-wider transition-all duration-500">
               {t('hero.cta.reserve')}
             </button>
           </a>
-          <a href="https://maps.google.com/?q=Carrer+del+Carme+43+Lloret+de+Mar" target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center py-2 text-white/70 hover:text-white transition-colors">
-            <div className="p-2 rounded-xl bg-white/5 mb-1"><MapPin className="w-4 h-4" /></div>
-            <span className="text-[9px] font-bold uppercase tracking-tighter">Find Us</span>
+          <a href="https://maps.google.com/?q=Carrer+del+Carme+43+Lloret+de+Mar" target="_blank" rel="noopener noreferrer" className="flex-1 flex flex-col items-center py-2 text-foreground/70 hover:text-foreground transition-colors">
+            <div className="p-2 rounded-xl bg-primary/10 mb-1"><MapPin className="w-4 h-4" /></div>
+            <span className="text-[9px] font-bold uppercase tracking-tight">Find Us</span>
           </a>
         </div>
       </div>
