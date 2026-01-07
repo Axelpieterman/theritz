@@ -169,7 +169,7 @@ const menuData = {
         <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-6">
           Our Menu
         </h1>
-        <div class="h-[2px] w-24 bg-primary mx-auto mb-8"></div>
+        <div class="h-[2px] w-24 bg-primary mx-auto"></div>
         <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-medium">
           From breakfast to cocktails, discover our full selection
         </p>
@@ -250,14 +250,13 @@ const menuData = {
         <h2 class="text-5xl md:text-7xl font-black text-foreground uppercase tracking-tighter leading-[0.9]">
           Cocktails
         </h2>
-        <div class="h-[3px] w-20 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+        <div class="h-[2px] w-24 bg-primary mx-auto"></div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {menuData.cocktails.map((item) => (
-          <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="relative">
+          <div class="group menu-card">
+            <div class="relative z-10">
               <div class="flex justify-between items-start mb-4 gap-4">
                 <h3 class="text-xl font-black text-foreground uppercase tracking-tight leading-tight group-hover:text-primary transition-colors duration-300">{item.name}</h3>
                 <span class="text-2xl font-black text-primary shrink-0">€{item.price.toFixed(2)}</span>
@@ -279,14 +278,13 @@ const menuData = {
         <h2 class="text-5xl md:text-7xl font-black text-foreground uppercase tracking-tighter leading-[0.9]">
           Mocktails
         </h2>
-        <div class="h-[3px] w-20 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+        <div class="h-[2px] w-24 bg-primary mx-auto"></div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {menuData.mocktails.map((item) => (
-          <div class="group relative bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(197,160,89,0.15)] transition-all duration-500 border border-black/5 hover:border-primary/20 hover:-translate-y-1">
-            <div class="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-transparent rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div class="relative">
+          <div class="group menu-card">
+            <div class="relative z-10">
               <div class="flex justify-between items-start mb-4 gap-4">
                 <h3 class="text-xl font-black text-foreground uppercase tracking-tight leading-tight group-hover:text-primary transition-colors duration-300">{item.name}</h3>
                 <span class="text-2xl font-black text-primary shrink-0">€{item.price.toFixed(2)}</span>
@@ -308,7 +306,7 @@ const menuData = {
         <h2 class="text-5xl md:text-7xl font-black text-foreground uppercase tracking-tighter leading-[0.9]">
           Breakfast
         </h2>
-        <div class="h-[3px] w-20 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto"></div>
+        <div class="h-[2px] w-24 bg-primary mx-auto"></div>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
