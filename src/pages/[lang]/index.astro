@@ -100,10 +100,10 @@ const t = useTranslations(lang);
   </style>
 
   <!-- Features Section -->
-  <section class="py-40 bg-background relative overflow-hidden">
-    <!-- Sophisticated Lighting -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.08),transparent_70%)]"></div>
-    <div class="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] animate-pulse"></div>
+  <section class="py-40 bg-mesh relative overflow-hidden">
+    <!-- Luminous Orbs for Depth -->
+    <div class="orb w-[600px] h-[600px] bg-primary/10 top-[-200px] left-[-100px] animate-[orb-float_25s_infinite]"></div>
+    <div class="orb w-[500px] h-[500px] bg-accent/5 bottom-[-100px] right-[-100px] animate-[orb-float_20s_infinite_reverse]"></div>
     
     <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
       <div class="text-center mb-32 space-y-4">
@@ -141,8 +141,9 @@ const t = useTranslations(lang);
   </section>
 
   <!-- About Section - Overhauled -->
-  <section class="py-32 bg-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-32 bg-mesh relative overflow-hidden">
+    <div class="orb w-[400px] h-[400px] bg-primary/5 top-[10%] right-[5%]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         <div class="lg:col-span-7 relative order-2 lg:order-1">
           <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
@@ -195,8 +196,9 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Food Highlights -->
-  <section class="py-32 bg-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-32 bg-mesh relative overflow-hidden">
+    <div class="orb w-[500px] h-[500px] bg-accent/5 bottom-[-200px] left-[-100px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-20 space-y-6">
         <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">Fresh & Delicious</p>
         <h2 class="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter leading-none text-balance">
@@ -233,8 +235,9 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Signature Drinks Preview -->
-  <section class="py-32 bg-gradient-to-b from-card to-background">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-32 bg-mesh relative overflow-hidden">
+    <div class="orb w-[600px] h-[600px] bg-primary/8 top-[-300px] right-[-100px]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-20 space-y-6">
         <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">{t('drinks.badge')}</p>
         <h2 class="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter leading-none text-balance">
@@ -313,8 +316,9 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Reviews Section -->
-  <section class="py-32 bg-background/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="py-32 bg-mesh relative overflow-hidden border-t border-primary/5">
+    <div class="orb w-[400px] h-[400px] bg-green-500/5 bottom-0 right-0"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-20 space-y-6">
         <p class="text-primary font-bold uppercase tracking-[0.4em] text-xs">⭐ {t('reviews.badge')}</p>
         <h2 class="text-4xl md:text-6xl font-black text-foreground uppercase tracking-tighter leading-none text-balance">
@@ -376,10 +380,9 @@ const t = useTranslations(lang);
   </section>
 
   <!-- Contact/Location Section -->
-  <section class="py-32 bg-secondary/30 relative overflow-hidden">
-    <!-- Subtle Background Elements -->
-    <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]"></div>
-    <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]"></div>
+  <section class="py-32 bg-mesh relative overflow-hidden border-t border-primary/5">
+    <div class="orb w-[800px] h-[800px] bg-primary/10 top-[-400px] right-[-200px] animate-[orb-float_30s_infinite]"></div>
+    <div class="orb w-[600px] h-[600px] bg-accent/5 bottom-[-300px] left-[-200px] animate-[orb-float_25s_infinite_reverse]"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-20 space-y-6">
