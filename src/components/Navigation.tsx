@@ -64,7 +64,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     { id: 'warm-lunch', label: '🍲 Warm Lunch', href: '#warm-lunch' },
     { id: 'evening', label: '🌙 Evening', href: '#evening' },
     { id: 'desserts', label: '🍰 Desserts', href: '#desserts' },
-    { id: 'drinks', label: '☕ Drinks', href: '#drinks' },
+    { id: 'drinks', label: '☕ Special Drinks', href: '#drinks' },
   ];
 
   const languages = [
