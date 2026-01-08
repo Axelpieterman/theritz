@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Globe, Phone, MapPin, Calendar } from 'lucide-react';
 import { Button } from './ui/button';
 import type { Language } from '../i18n/languages';
@@ -17,6 +17,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [activeTab, setActiveTab] = useState('cocktails');
   const [isInitialMount, setIsInitialMount] = useState(true);
+  const [tabIndicator, setTabIndicator] = useState({ left: 0, width: 0 });
+  const tabRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
         });
       },
       {
-        rootMargin: '-100px 0px -50% 0px',
+        rootMargin: '-144px 0px -50% 0px',
         threshold: 0,
       }
     );
@@ -60,6 +62,23 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
       });
     };
   }, [showMenuTabs]);
+
+  // Update sliding indicator position when active tab changes
+  useEffect(() => {
+    if (!showMenuTabs) return;
+    const activeTabElement = tabRefs.current[activeTab];
+    if (activeTabElement) {
+      const container = activeTabElement.parentElement;
+      if (container) {
+        const containerRect = container.getBoundingClientRect();
+        const tabRect = activeTabElement.getBoundingClientRect();
+        setTabIndicator({
+          left: tabRect.left - containerRect.left,
+          width: tabRect.width,
+        });
+      }
+    }
+  }, [activeTab, showMenuTabs]);
 
   const menuTabs = [
     { id: 'cocktails', label: '🍹 Cocktails', href: '#cocktails' },
@@ -196,25 +215,35 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
 
       {/* Separate Menu Tabs Pill - Smaller Add-on Below Main Nav */}
       {showMenuTabs && (
-        <div className="fixed top-24 md:top-28 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]">
-          <div className="glass-light rounded-full px-3 md:px-4 py-2">
-            <nav className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center">
+        <div className="fixed top-[5.5rem] md:top-24 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]">
+          <div className="glass-light rounded-full px-3 md:px-4 py-2 relative">
+            <nav className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center relative">
+              {/* Sliding Background Indicator */}
+              <div 
+                className="absolute top-1/2 -translate-y-1/2 h-[calc(100%-8px)] bg-primary/20 rounded-full transition-all duration-500 ease-out"
+                style={{
+                  left: `${tabIndicator.left}px`,
+                  width: `${tabIndicator.width}px`,
+                }}
+              />
+              
               {menuTabs.map((tab, index) => (
                 <>
                   <a
                     key={tab.id}
+                    ref={(el) => (tabRefs.current[tab.id] = el)}
                     href={tab.href}
                     className={cn(
-                      "menu-tab whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-all duration-300",
+                      "menu-tab relative z-10 whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-colors duration-300",
                       activeTab === tab.id 
-                        ? "bg-primary/20 text-foreground" 
-                        : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
+                        ? "text-foreground" 
+                        : "text-foreground/60 hover:text-foreground"
                     )}
                   >
                     {tab.label}
                   </a>
                   {index < menuTabs.length - 1 && (
-                    <div className="h-4 w-[1px] bg-primary/25 mx-0.5"></div>
+                    <div className="h-4 w-[1px] bg-primary/25 mx-0.5 relative z-10"></div>
                   )}
                 </>
               ))}
