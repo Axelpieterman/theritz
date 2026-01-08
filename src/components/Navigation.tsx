@@ -237,9 +237,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                     href={tab.href}
                     onClick={(e) => {
                       e.preventDefault();
-                      // Immediately set active tab and disable observer
+                      // Disable observer during manual scroll
                       isManualScroll.current = true;
-                      setActiveTab(tab.id);
                       
                       // Scroll to section
                       const section = document.getElementById(tab.id);
@@ -253,10 +252,31 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                           behavior: 'smooth'
                         });
                         
-                        // Re-enable observer after scroll completes
+                        // Re-enable observer and verify correct section after scroll completes
                         setTimeout(() => {
+                          // Find which section is actually in view
+                          const sections = menuTabs.map(t => ({ id: t.id, el: document.getElementById(t.id) })).filter(s => s.el);
+                          
+                          // Check which section is closest to the target scroll position (144px from top)
+                          let closestSection = null;
+                          let closestDistance = Infinity;
+                          
+                          for (const sec of sections) {
+                            const rect = sec.el!.getBoundingClientRect();
+                            const distance = Math.abs(rect.top - 144);
+                            if (distance < closestDistance && rect.top <= 300) {
+                              closestDistance = distance;
+                              closestSection = sec.id;
+                            }
+                          }
+                          
+                          if (closestSection) {
+                            setActiveTab(closestSection);
+                          }
+                          
+                          // Re-enable observer
                           isManualScroll.current = false;
-                        }, 1000);
+                        }, 800);
                       }
                     }}
                     className={cn(
