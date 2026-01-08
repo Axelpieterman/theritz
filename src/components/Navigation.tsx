@@ -325,27 +325,53 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
       });
     };
     
-    // Auto-scroll tab into view if needed
-    const behavior = prefersReducedMotion.current ? 'auto' : 'smooth';
+    // For immediate updates (resize, initial load)
+    if (forceImmediate || prefersReducedMotion.current) {
+      // Auto-scroll tab into view instantly
+      activeTabElement.scrollIntoView({
+        behavior: 'auto',
+        block: 'nearest',
+        inline: 'center',
+      });
+      // Calculate immediately after instant scroll
+      requestAnimationFrame(calculatePosition);
+      return;
+    }
+    
+    // For smooth scrolling: Monitor scroll position until stable
+    let lastScrollLeft = container.scrollLeft;
+    let stableFrames = 0;
+    const requiredStableFrames = 2;
+    
+    // Start smooth scroll
     activeTabElement.scrollIntoView({
-      behavior,
+      behavior: 'smooth',
       block: 'nearest',
       inline: 'center',
     });
     
-    // Calculate position AFTER scroll completes
-    // Use RAF to wait for scrollIntoView to apply
-    if (prefersReducedMotion.current || forceImmediate) {
-      // Instant scroll - calculate immediately
-      requestAnimationFrame(calculatePosition);
-    } else {
-      // Smooth scroll - wait for it to complete
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setTimeout(calculatePosition, 50); // Small delay for smooth scroll
-        });
-      });
-    }
+    // Monitor scroll completion
+    const checkScrollComplete = () => {
+      const currentScrollLeft = container.scrollLeft;
+      
+      // Check if scroll has stabilized
+      if (Math.abs(currentScrollLeft - lastScrollLeft) < 1) {
+        stableFrames++;
+        
+        if (stableFrames >= requiredStableFrames) {
+          // Scroll complete - calculate position now
+          calculatePosition();
+          return;
+        }
+      } else {
+        stableFrames = 0;
+      }
+      
+      lastScrollLeft = currentScrollLeft;
+      requestAnimationFrame(checkScrollComplete);
+    };
+    
+    requestAnimationFrame(checkScrollComplete);
   }, [activeTab]);
 
   useEffect(() => {

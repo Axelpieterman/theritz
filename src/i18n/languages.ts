@@ -10,3 +10,4 @@ export const defaultLang = 'en';
 
 export type Language = keyof typeof languages;
 
+
