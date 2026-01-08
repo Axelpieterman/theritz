@@ -300,7 +300,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   // ============================================================================
   // TAB INDICATOR POSITIONING - Robust & Adaptive
   // ============================================================================
-  const updateTabIndicator = useCallback(() => {
+  const updateTabIndicator = useCallback((forceImmediate = false) => {
     const activeTabElement = tabRefs.current.get(activeTab);
     const container = tabsNavRef.current;
     
@@ -309,44 +309,72 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
       return;
     }
     
-    const containerRect = container.getBoundingClientRect();
-    const tabRect = activeTabElement.getBoundingClientRect();
+    // Calculate position function
+    const calculatePosition = () => {
+      const containerRect = container.getBoundingClientRect();
+      const tabRect = activeTabElement.getBoundingClientRect();
+      
+      // Calculate position accounting for horizontal scroll
+      const scrollLeft = container.scrollLeft || 0;
+      const left = tabRect.left - containerRect.left + scrollLeft;
+      
+      setTabIndicator({
+        left,
+        width: tabRect.width,
+        opacity: 1,
+      });
+    };
     
-    // Calculate position accounting for horizontal scroll
-    const scrollLeft = container.scrollLeft || 0;
-    const left = tabRect.left - containerRect.left + scrollLeft;
-    
-    setTabIndicator({
-      left,
-      width: tabRect.width,
-      opacity: 1,
-    });
-    
-    // Auto-scroll tab into view if needed (with smooth behavior if not reduced motion)
+    // Auto-scroll tab into view if needed
     const behavior = prefersReducedMotion.current ? 'auto' : 'smooth';
     activeTabElement.scrollIntoView({
       behavior,
       block: 'nearest',
       inline: 'center',
     });
+    
+    // Calculate position AFTER scroll completes
+    // Use RAF to wait for scrollIntoView to apply
+    if (prefersReducedMotion.current || forceImmediate) {
+      // Instant scroll - calculate immediately
+      requestAnimationFrame(calculatePosition);
+    } else {
+      // Smooth scroll - wait for it to complete
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTimeout(calculatePosition, 50); // Small delay for smooth scroll
+        });
+      });
+    }
   }, [activeTab]);
 
   useEffect(() => {
     if (!showMenuTabs) return;
     
-    updateTabIndicator();
+    // Initial calculation with delay
+    updateTabIndicator(true);
+    
+    // Debounce helper
+    let resizeTimeout: number | null = null;
     
     // Update on window resize
     const handleResize = () => {
-      updateTabIndicator();
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        updateTabIndicator(true);
+      }, 100);
     };
     
     window.addEventListener('resize', handleResize);
     
     // Use ResizeObserver for tab width changes (font loading, zoom)
+    let roTimeout: number | null = null;
     if (typeof ResizeObserver !== 'undefined') {
       resizeObserverRef.current = new ResizeObserver(() => {
-        updateTabIndicator();
+        if (roTimeout) clearTimeout(roTimeout);
+        roTimeout = window.setTimeout(() => {
+          updateTabIndicator(true);
+        }, 50);
       });
       
       tabRefs.current.forEach(tab => {
@@ -358,6 +386,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     
     return () => {
       window.removeEventListener('resize', handleResize);
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+      if (roTimeout) clearTimeout(roTimeout);
       if (resizeObserverRef.current) {
         resizeObserverRef.current.disconnect();
         resizeObserverRef.current = null;
@@ -376,6 +406,11 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     
     const section = document.getElementById(tabId);
     if (!section) return;
+    
+    // Update URL hash without jumping (silent navigation)
+    if (window.history.replaceState) {
+      window.history.replaceState(null, '', `#${tabId}`);
+    }
     
     // Mark as programmatic scroll
     scrollStateRef.current.isProgrammaticScroll = true;
