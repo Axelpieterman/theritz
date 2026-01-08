@@ -19,6 +19,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   const [isInitialMount, setIsInitialMount] = useState(true);
   const [tabIndicator, setTabIndicator] = useState({ left: 0, width: 0 });
   const tabRefs = useRef<{ [key: string]: HTMLAnchorElement | null }>({});
+  const isManualScroll = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +42,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          // Only update active tab if not manually scrolling
+          if (entry.isIntersecting && !isManualScroll.current) {
             setActiveTab(entry.target.id);
           }
         });
@@ -233,8 +235,32 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                     key={tab.id}
                     ref={(el) => (tabRefs.current[tab.id] = el)}
                     href={tab.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // Immediately set active tab and disable observer
+                      isManualScroll.current = true;
+                      setActiveTab(tab.id);
+                      
+                      // Scroll to section
+                      const section = document.getElementById(tab.id);
+                      if (section) {
+                        const headerOffset = 144;
+                        const elementPosition = section.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                        
+                        // Re-enable observer after scroll completes
+                        setTimeout(() => {
+                          isManualScroll.current = false;
+                        }, 1000);
+                      }
+                    }}
                     className={cn(
-                      "menu-tab relative z-10 whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-colors duration-300",
+                      "menu-tab relative z-10 whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-colors duration-300 cursor-pointer",
                       activeTab === tab.id 
                         ? "text-foreground" 
                         : "text-foreground/60 hover:text-foreground"

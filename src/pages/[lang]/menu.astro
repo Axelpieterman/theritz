@@ -790,29 +790,4 @@ const menuData = {
   </section>
 
   <!-- Smooth Scroll Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tabs = document.querySelectorAll('.menu-tab');
-      
-      // Smooth scroll with proper offset for fixed header
-      tabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-          e.preventDefault();
-          const target = tab.getAttribute('href');
-          const section = document.querySelector(target);
-          if (section) {
-            // Calculate position accounting for fixed navbar + menu bar (144px = scroll-mt-36)
-            const headerOffset = 144;
-            const elementPosition = section.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-    });
-  </script>
 </Layout>
