@@ -90,6 +90,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   const handleTabClick = (tabId: string, event: React.MouseEvent) => {
     event.preventDefault();
     
+    console.log('🔍 Tab clicked:', tabId);
+    
     // 1. Instant visual feedback
     setActiveTab(tabId);
     setIsScrolling(true);
@@ -99,7 +101,10 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     
     // 3. Find target section
     const section = document.getElementById(tabId);
+    console.log('📍 Section found:', section ? 'YES' : 'NO', section);
+    
     if (!section) {
+      console.error('❌ Section not found for ID:', tabId);
       disableObserverRef.current = false;
       setIsScrolling(false);
       return;
@@ -109,10 +114,19 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     const offset = getScrollOffset();
     const targetY = section.offsetTop - offset;
     
+    console.log('📊 Scroll calculations:', {
+      offset,
+      sectionTop: section.offsetTop,
+      targetY,
+      currentY: window.scrollY
+    });
+    
     // 5. Calculate dynamic timeout based on scroll distance
     const distance = Math.abs(targetY - window.scrollY);
     const scrollDuration = Math.min(distance / 2, 1000); // Max 1 second
     const timeout = scrollDuration + 200; // Add buffer
+    
+    console.log('⏱️ Scroll duration:', scrollDuration, 'Timeout:', timeout);
     
     // 6. Perform smooth scroll
     window.scrollTo({
@@ -120,10 +134,13 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
       behavior: 'smooth'
     });
     
+    console.log('✅ Scrolling to', targetY);
+    
     // 7. Re-enable observer after scroll completes
     setTimeout(() => {
       disableObserverRef.current = false;
       setIsScrolling(false);
+      console.log('🔄 Observer re-enabled');
     }, timeout);
   };
 
