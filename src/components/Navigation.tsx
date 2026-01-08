@@ -16,6 +16,7 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   const [isScrolled, setIsScrolled] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [activeTab, setActiveTab] = useState('cocktails');
+  const [isInitialMount, setIsInitialMount] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +24,8 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     };
     // Check scroll position immediately on mount
     handleScroll();
+    // Enable transitions after initial render
+    setTimeout(() => setIsInitialMount(false), 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -90,13 +93,15 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
       {/* Desktop & Mobile Top Nav */}
       <nav 
         className={cn(
-          "fixed top-0 w-full z-50 transition-all duration-700 px-6",
+          "fixed top-0 w-full z-50 px-6",
+          !isInitialMount && "transition-all duration-700",
           isScrolled ? "pt-3" : "pt-6"
         )}
       >
         <div 
           className={cn(
-            "max-w-[90rem] mx-auto transition-all duration-700 rounded-full glass-dark",
+            "max-w-[90rem] mx-auto rounded-full glass-dark",
+            !isInitialMount && "transition-all duration-700",
             isScrolled 
               ? "py-3 px-6 md:px-8" 
               : "py-4 md:py-5 px-6 md:px-10"
@@ -110,14 +115,16 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
                   src="/ritzlogo.png" 
                   alt="The Ritz Logo" 
                   className={cn(
-                    "w-auto transition-all duration-700 group-hover:scale-110 group-hover:rotate-3",
+                    "w-auto group-hover:scale-110 group-hover:rotate-3",
+                    !isInitialMount && "transition-all duration-700",
                     isScrolled ? "h-8 md:h-10" : "h-10 md:h-14"
                   )}
                   style={{filter: 'none'}}
                 />
               </div>
               <div className={cn(
-                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] transition-all duration-700 whitespace-nowrap text-foreground",
+                "font-black uppercase tracking-[0.3em] md:tracking-[0.4em] whitespace-nowrap text-foreground",
+                !isInitialMount && "transition-all duration-700",
                 isScrolled ? "text-sm md:text-base" : "text-base md:text-xl"
               )}>
                 THE RITZ
