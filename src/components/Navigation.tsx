@@ -21,12 +21,37 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
   const [showLangMenu, setShowLangMenu] = useState(false);
   const [activeTab, setActiveTab] = useState('cocktails');
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   
   // ============================================================================
   // REFS
   // ============================================================================
   const navbarRef = useRef<HTMLDivElement>(null);
   const menuTabsContainerRef = useRef<HTMLDivElement>(null);
+  const disableObserverRef = useRef(false);
+
+  // ============================================================================
+  // HELPER FUNCTIONS
+  // ============================================================================
+  const getScrollOffset = (): number => {
+    let totalOffset = 0;
+    
+    // Get actual navbar height
+    if (navbarRef.current) {
+      totalOffset += navbarRef.current.offsetHeight;
+    }
+    
+    // Get actual menu tabs height (if visible)
+    if (showMenuTabs && menuTabsContainerRef.current) {
+      totalOffset += menuTabsContainerRef.current.offsetHeight;
+    }
+    
+    // Add buffer for better UX
+    const buffer = 20;
+    
+    // Fallback if refs aren't ready yet
+    return totalOffset > 0 ? totalOffset + buffer : 164; // 144 + 20 fallback
+  };
 
   // ============================================================================
   // MENU TABS CONFIGURATION
@@ -60,6 +85,49 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
 
 
   // ============================================================================
+  // TAB CLICK HANDLER - Simple & Reliable
+  // ============================================================================
+  const handleTabClick = (tabId: string, event: React.MouseEvent) => {
+    event.preventDefault();
+    
+    // 1. Instant visual feedback
+    setActiveTab(tabId);
+    setIsScrolling(true);
+    
+    // 2. Disable scroll observer during navigation
+    disableObserverRef.current = true;
+    
+    // 3. Find target section
+    const section = document.getElementById(tabId);
+    if (!section) {
+      disableObserverRef.current = false;
+      setIsScrolling(false);
+      return;
+    }
+    
+    // 4. Calculate scroll position with dynamic offset
+    const offset = getScrollOffset();
+    const targetY = section.offsetTop - offset;
+    
+    // 5. Calculate dynamic timeout based on scroll distance
+    const distance = Math.abs(targetY - window.scrollY);
+    const scrollDuration = Math.min(distance / 2, 1000); // Max 1 second
+    const timeout = scrollDuration + 200; // Add buffer
+    
+    // 6. Perform smooth scroll
+    window.scrollTo({
+      top: targetY,
+      behavior: 'smooth'
+    });
+    
+    // 7. Re-enable observer after scroll completes
+    setTimeout(() => {
+      disableObserverRef.current = false;
+      setIsScrolling(false);
+    }, timeout);
+  };
+
+  // ============================================================================
   // NAVBAR SCROLL BEHAVIOR - Optimized Performance
   // ============================================================================
   useEffect(() => {
@@ -88,6 +156,85 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // ============================================================================
+  // SCROLL-TO-HIGHLIGHT OBSERVER - Simple & Throttled
+  // ============================================================================
+  useEffect(() => {
+    if (!showMenuTabs) return;
+    
+    const checkVisibleSection = () => {
+      // Skip if user just clicked a tab (waiting for scroll to complete)
+      if (disableObserverRef.current) return;
+      
+      // Calculate current scroll position with same offset as click handler
+      const scrollPosition = window.scrollY + getScrollOffset();
+      
+      // Find which section is closest to the scroll position
+      let closestSection = 'cocktails';
+      let closestDistance = Infinity;
+      
+      menuTabs.forEach(tab => {
+        const section = document.getElementById(tab.id);
+        if (!section) return;
+        
+        const sectionTop = section.offsetTop;
+        const distance = Math.abs(scrollPosition - sectionTop);
+        
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = tab.id;
+        }
+      });
+      
+      setActiveTab(closestSection);
+    };
+    
+    // Throttle scroll checks to every 200ms for performance
+    let scrollTimeout: number | null = null;
+    const handleScroll = () => {
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(checkVisibleSection, 200);
+    };
+    
+    // Initial check on mount
+    checkVisibleSection();
+    
+    // Listen to scroll events
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [showMenuTabs, menuTabs]);
+
+  // ============================================================================
+  // SLIDING INDICATOR ANIMATION - Pure CSS
+  // ============================================================================
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 });
+
+  useEffect(() => {
+    if (!showMenuTabs) return;
+    
+    // Find the active tab button
+    const activeButton = document.querySelector(`[data-tab="${activeTab}"]`) as HTMLElement;
+    const container = menuTabsContainerRef.current;
+    
+    if (!activeButton || !container) {
+      setIndicatorStyle({ left: 0, width: 0, opacity: 0 });
+      return;
+    }
+    
+    // Calculate position relative to container
+    const containerRect = container.getBoundingClientRect();
+    const buttonRect = activeButton.getBoundingClientRect();
+    
+    const left = buttonRect.left - containerRect.left;
+    const width = buttonRect.width;
+    
+    setIndicatorStyle({ left, width, opacity: 1 });
+  }, [activeTab, showMenuTabs]);
 
   // ============================================================================
   // INITIAL MOUNT ANIMATION PREVENTION - Zero Flash
@@ -238,31 +385,49 @@ export default function Navigation({ currentLang, showMenuTabs = false }: Naviga
         </div>
       </nav>
 
-      {/* Menu Tabs Bar - SIMPLIFIED */}
+      {/* Menu Tabs Bar - NEW SYSTEM */}
       {showMenuTabs && (
         <div 
           ref={menuTabsContainerRef}
           className="fixed top-[5.5rem] md:top-24 left-1/2 -translate-x-1/2 z-40 w-auto max-w-[95vw]"
         >
-          <div className="glass-light rounded-full px-3 md:px-4 py-2">
+          <div className="glass-light rounded-full px-3 md:px-4 py-2 relative">
             <nav 
-              className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center"
+              className="flex overflow-x-auto hide-scrollbar gap-0.5 items-center relative"
+              role="navigation"
+              aria-label="Menu sections"
             >
+              {/* Sliding Background Indicator */}
+              <div 
+                className="absolute top-1/2 -translate-y-1/2 h-[calc(100%-8px)] bg-primary/20 rounded-full pointer-events-none transition-all duration-500 ease-out"
+                style={{
+                  left: `${indicatorStyle.left}px`,
+                  width: `${indicatorStyle.width}px`,
+                  opacity: indicatorStyle.opacity,
+                }}
+                aria-hidden="true"
+              />
+              
               {menuTabs.map((tab, index) => (
                 <div key={tab.id} className="flex items-center gap-0.5">
-                  <a
-                    href={tab.href}
+                  <button
+                    data-tab={tab.id}
+                    onClick={(e) => handleTabClick(tab.id, e)}
+                    disabled={isScrolling && activeTab === tab.id}
                     className={cn(
-                      "whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-colors duration-300",
+                      "relative z-10 whitespace-nowrap px-2.5 md:px-3.5 py-1.5 md:py-2 rounded-full font-black uppercase tracking-[0.15em] text-[10px] md:text-[11px] transition-colors duration-300 cursor-pointer",
                       activeTab === tab.id 
-                        ? "text-foreground bg-primary/20" 
-                        : "text-foreground/60 hover:text-foreground hover:bg-primary/10"
+                        ? "text-foreground" 
+                        : "text-foreground/60 hover:text-foreground",
+                      isScrolling && activeTab === tab.id && "opacity-70"
                     )}
+                    aria-current={activeTab === tab.id ? 'page' : undefined}
+                    aria-label={`Navigate to ${tab.label} section`}
                   >
                     {tab.label}
-                  </a>
+                  </button>
                   {index < menuTabs.length - 1 && (
-                    <div className="h-4 w-[1px] bg-primary/25 mx-0.5"></div>
+                    <div className="h-4 w-[1px] bg-primary/25 mx-0.5 relative z-10" aria-hidden="true"></div>
                   )}
                 </div>
               ))}
