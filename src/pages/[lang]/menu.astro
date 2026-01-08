@@ -793,39 +793,25 @@ const menuData = {
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const tabs = document.querySelectorAll('.menu-tab');
-      const sections = document.querySelectorAll('section[id]');
       
-      // Smooth scroll
+      // Smooth scroll with proper offset for fixed header
       tabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
           e.preventDefault();
           const target = tab.getAttribute('href');
           const section = document.querySelector(target);
           if (section) {
-            section.scrollIntoView({ behavior: 'smooth' });
+            // Calculate position accounting for fixed navbar + menu bar (144px = scroll-mt-36)
+            const headerOffset = 144;
+            const elementPosition = section.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
           }
         });
-      });
-
-      // Active tab on scroll
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            tabs.forEach(tab => tab.classList.remove('active'));
-            const activeTab = document.querySelector(`a[href="#${entry.target.id}"]`);
-            if (activeTab) {
-              activeTab.classList.add('active');
-            }
-          }
-        });
-      }, {
-        rootMargin: '-20% 0px -70% 0px'
-      });
-
-      sections.forEach(section => {
-        if (section.id) {
-          observer.observe(section);
-        }
       });
     });
   </script>
